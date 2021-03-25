@@ -403,7 +403,7 @@ all:
 	echo "skipped" >&2
 endif
 
-build: elf cpfirmware
+build: cpfirmware
 check-size: build
 check-md5: build
 objs-size: build
