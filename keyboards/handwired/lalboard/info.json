@@ -1,0 +1,14 @@
+{
+    "keyboard_name": "lalboard",
+    "url": "https://lalboard.com",
+    "maintainer": "JesusFreke",
+    "width": 1,
+    "height": 1,
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"label":"key", "x":0, "y":0}
+            ]
+        }
+    }
+}
