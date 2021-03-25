@@ -231,6 +231,10 @@ define PARSE_RULE
         KEYBOARD_RULE=all
         REQUIRE_PLATFORM_KEY := arm_atsam
         $$(eval $$(call PARSE_ALL_KEYBOARDS))
+    else ifeq ($$(call COMPARE_AND_REMOVE_FROM_RULE,all-esp32),true)
+        KEYBOARD_RULE=all
+        REQUIRE_PLATFORM_KEY := esp32
+        $$(eval $$(call PARSE_ALL_KEYBOARDS))
     else ifeq ($$(call COMPARE_AND_REMOVE_FROM_RULE,test),true)
         $$(eval $$(call PARSE_TEST))
     # If the rule starts with the name of a known keyboard, then continue

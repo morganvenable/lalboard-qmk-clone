@@ -440,3 +440,9 @@ ifneq (,$(filter $(MCU),attiny85))
   #     automatically to create a 32-bit value in your source code.
   F_CPU ?= 16500000
 endif
+
+ifneq (,$(filter $(MCU),esp32s2))
+  PROTOCOL = esp-idf
+  MCU_FAMILY  = esp32
+  MCU_SERIES = esp32s2
+endif

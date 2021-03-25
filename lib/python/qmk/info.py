@@ -7,7 +7,7 @@ import jsonschema
 from dotty_dict import dotty
 from milc import cli
 
-from qmk.constants import CHIBIOS_PROCESSORS, LUFA_PROCESSORS, VUSB_PROCESSORS
+from qmk.constants import CHIBIOS_PROCESSORS, ESP_IDF_PROCESSORS, LUFA_PROCESSORS, VUSB_PROCESSORS
 from qmk.c_parse import find_layouts
 from qmk.json_schema import deep_update, json_load, keyboard_validate, keyboard_api_validate
 from qmk.keyboard import config_h, rules_mk
@@ -272,6 +272,9 @@ def _extract_rules_mk(info_data):
     elif info_data['processor'] in LUFA_PROCESSORS + VUSB_PROCESSORS:
         avr_processor_rules(info_data, rules)
 
+    elif info_data['processor'] in ESP_IDF_PROCESSORS:
+        esp_idf_processor_rules(info_data, rules)
+
     else:
         cli.log.warning("%s: Unknown MCU: %s" % (info_data['keyboard_folder'], info_data['processor']))
         unknown_processor_rules(info_data, rules)
@@ -455,6 +458,16 @@ def avr_processor_rules(info_data, rules):
 
     return info_data
 
+def esp_idf_processor_rules(info_data, rules):
+    """Setup the default info for an ESP32 board."""
+    info_data['processor_type'] = 'esp32'
+    info_data['platform'] = 'ESP32'
+    info_data['protocol'] = 'ESP_IDF'
+
+    if 'bootloader' not in info_data:
+        info_data['bootloader'] = 'unknown'
+
+    return info_data
 
 def unknown_processor_rules(info_data, rules):
     """Setup the default keyboard info for unknown boards.

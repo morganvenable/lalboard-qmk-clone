@@ -222,9 +222,13 @@ ifneq ("$(wildcard $(KEYBOARD_PATH_5)/$(KEYBOARD_FOLDER_5).h)","")
 endif
 
 # Determine and set parameters based on the keyboard's processor family.
-# We can assume a ChibiOS target When MCU_FAMILY is defined since it's
-# not used for LUFA
-ifdef MCU_FAMILY
+ifeq ("${MCU_FAMILY}", "esp32")
+    PLATFORM=ESP32
+    PLATFORM_KEY=esp32
+    FIRMWARE_FORMAT=a
+else ifdef MCU_FAMILY
+    # We can assume a ChibiOS target When MCU_FAMILY is defined and is
+    # not esp32, since it's not used for LUFA
     PLATFORM=CHIBIOS
     PLATFORM_KEY=chibios
     FIRMWARE_FORMAT?=bin

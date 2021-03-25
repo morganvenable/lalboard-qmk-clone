@@ -55,6 +55,7 @@ MSG_LINKING = Linking:
 MSG_COMPILING = Compiling:
 MSG_COMPILING_CXX = Compiling:
 MSG_ASSEMBLING = Assembling:
+MSG_ARCHIVING = Archiving:
 MSG_CLEANING = Cleaning project:
 MSG_CREATING_LIBRARY = Creating library:
 MSG_SUBMODULE_DIRTY = $(WARN_COLOR)WARNING:$(NO_COLOR) Some git submodules are out of date or modified.\n\

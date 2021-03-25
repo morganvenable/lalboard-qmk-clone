@@ -255,6 +255,7 @@ DFU_SUFFIX_ARGS ?=
 
 elf: $(BUILD_DIR)/$(TARGET).elf
 hex: $(BUILD_DIR)/$(TARGET).hex
+a: $(BUILD_DIR)/$(TARGET).a
 cpfirmware: $(FIRMWARE_FORMAT)
 	$(SILENT) || printf "Copying $(TARGET).$(FIRMWARE_FORMAT) to qmk_firmware folder" | $(AWK_CMD)
 	$(COPY) $(BUILD_DIR)/$(TARGET).$(FIRMWARE_FORMAT) $(TARGET).$(FIRMWARE_FORMAT) && $(PRINT_OK)
@@ -322,6 +323,16 @@ BEGIN = gccversion sizebefore
 %.elf: $(OBJ) $(MASTER_OUTPUT)/cflags.txt $(MASTER_OUTPUT)/ldflags.txt $(MASTER_OUTPUT)/obj.txt | $(BEGIN)
 	@$(SILENT) || printf "$(MSG_LINKING) $@" | $(AWK_CMD)
 	$(eval CMD=$(CC) $(ALL_CFLAGS) $(filter-out %.txt,$^) --output $@ $(LDFLAGS))
+	@$(BUILD_CMD)
+
+
+# Link: create static library from object files.
+.SECONDARY : $(BUILD_DIR)/$(TARGET).a
+.PRECIOUS : $(OBJ)
+# Note the obj.txt dependency is there to force linking if a source file is deleted
+%.a: $(OBJ) $(MASTER_OUTPUT)/cflags.txt $(MASTER_OUTPUT)/obj.txt | $(BEGIN)
+	@$(SILENT) || printf "$(MSG_ARCHIVING) $@" | $(AWK_CMD)
+	$(eval CMD=$(AR) -rc $@ $(filter-out %.txt,$^))
 	@$(BUILD_CMD)
 
 
