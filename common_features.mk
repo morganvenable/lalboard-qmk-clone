@@ -177,8 +177,10 @@ else
       endif
     else ifeq ($(PLATFORM),ARM_ATSAM)
       SRC += $(PLATFORM_COMMON_DIR)/eeprom.c
-	else ifeq ($(PLATFORM),ESP32)
-      SRC += $(PLATFORM_COMMON_DIR)/eeprom.c
+    else ifeq ($(PLATFORM),ESP32)
+      OPT_DEFS += -DEEPROM_DRIVER
+      COMMON_VPATH += $(DRIVER_PATH)/eeprom
+      SRC += $(PLATFORM_COMMON_DIR)/eeprom.c eeprom_driver.c
     else ifeq ($(PLATFORM),TEST)
       SRC += $(PLATFORM_COMMON_DIR)/eeprom.c
     endif
