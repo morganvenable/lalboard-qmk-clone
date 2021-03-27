@@ -90,7 +90,7 @@ void print_set_sendchar(sendchar_func_t func);
 #define print_val_decs(v) xprintf(#v ": %d\n", v)
 #define print_val_hex8(v) xprintf(#v ": %X\n", v)
 #define print_val_hex16(v) xprintf(#v ": %02X\n", v)
-#define print_val_hex32(v) xprintf(#v ": %04lX\n", v)
+#define print_val_hex32(v) xprintf(#v ": %04lX\n", (unsigned long)v)
 #define print_val_bin8(v) xprintf(#v ": %08b\n", v)
 #define print_val_bin16(v) xprintf(#v ": %016b\n", v)
 #define print_val_bin32(v) xprintf(#v ": %032lb\n", v)
