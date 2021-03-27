@@ -24,6 +24,11 @@ else
     include $(TMK_PATH)/$(COMMON_DIR)/lib_printf.mk
 endif
 
+# Import platform gpio.mk, if it exists
+ifneq ("$(wildcard $(TMK_PATH)/$(PLATFORM_COMMON_DIR)/gpio.mk)","")
+    include $(TMK_PATH)/$(PLATFORM_COMMON_DIR)/gpio.mk
+endif
+
 # Option modules
 BOOTMAGIC_ENABLE ?= no
 VALID_MAGIC_TYPES := yes full lite
