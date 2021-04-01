@@ -50,16 +50,11 @@ void send_consumer(uint16_t data);
 
 host_driver_t esp_idf_driver = {keyboard_leds, send_keyboard, send_mouse, send_system, send_consumer};
 
-int idf_main(void) {
-
-    esp_log_level_set("*", ESP_LOG_VERBOSE);
-
-    ESP_LOGE("app", "here");
+int main(void) __attribute__((weak));
+int main(void) {
     board_init();
 
     host_set_driver(&esp_idf_driver);
-
-    ESP_LOGE("app", "after board_init");
 
     // Create a task for tinyusb device stack
     (void) xTaskCreateStatic( usb_device_task, "usbd", USBD_STACK_SIZE, NULL, configMAX_PRIORITIES-1, usb_device_stack, &usb_device_taskdef);
