@@ -51,6 +51,12 @@ void send_consumer(uint16_t data);
 host_driver_t esp_idf_driver = {keyboard_leds, send_keyboard, send_mouse, send_system, send_consumer};
 
 int main(void) __attribute__((weak));
+
+// The entry point for an esp-idf project
+void app_main(void) {
+    main();
+}
+
 int main(void) {
     board_init();
 
