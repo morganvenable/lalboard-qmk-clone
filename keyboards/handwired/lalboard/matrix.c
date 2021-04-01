@@ -21,9 +21,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+static matrix_row_t button_state;
+
 matrix_row_t matrix_get_row(uint8_t row) {
-    // TODO: return the requested row data
-    return 0;
+    return button_state;
 }
 
 void matrix_print(void) {
@@ -46,12 +47,11 @@ __attribute__((weak)) void matrix_scan_kb(void) { matrix_scan_user(); }
 __attribute__((weak)) void matrix_scan_user(void) {}
 
 uint8_t matrix_scan(void) {
-    bool matrix_has_changed = false;
+    matrix_row_t new_button_state = !readPin(0);
 
-    // TODO: add matrix scanning routine here
+    bool matrix_has_changed = new_button_state != button_state;
 
-    // This *must* be called for correct keyboard behavior
-    matrix_scan_quantum();
+    button_state = new_button_state;
 
     return matrix_has_changed;
 }
