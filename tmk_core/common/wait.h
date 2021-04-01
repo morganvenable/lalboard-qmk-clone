@@ -111,7 +111,7 @@ __attribute__((always_inline)) static inline void wait_cpuclock_allnop(unsigned 
 #    include "clks.h"
 #    define wait_ms(ms) CLK_delay_ms(ms)
 #    define wait_us(us) CLK_delay_us(us)
-#elif defined PROTOCOL_ESP_IDF
+#elif defined PLATFORM_ESP_IDF
 #    include "freertos/FreeRTOS.h"
 #    include "freertos/task.h"
 #    include "esp_rom_sys.h"

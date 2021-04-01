@@ -22,3 +22,7 @@
 [submodule "lib/printf"]
 	path = lib/printf
 	url = https://github.com/qmk/printf
+[submodule "lib/tinyusb"]
+	path = lib/tinyusb
+	url = https://github.com/espressif/tinyusb.git
+	branch = esp-based_on_9f0b401f

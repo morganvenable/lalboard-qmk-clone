@@ -442,7 +442,7 @@ ifneq (,$(filter $(MCU),attiny85))
 endif
 
 ifneq (,$(filter $(MCU),esp32s2))
-  PROTOCOL = esp-idf
+  PROTOCOL = tinyUSB
   MCU_FAMILY  = esp32
   MCU_SERIES = esp32s2
 endif
