@@ -183,41 +183,40 @@ enum usb_interfaces {
     TOTAL_INTERFACES
 };
 
-#define NEXT_EPNUM __COUNTER__
 
 /*
  * Endpoint numbers
  */
 enum usb_endpoints {
-    __unused_epnum__ = NEXT_EPNUM,  // Endpoint numbering starts at 1
+    __unused_epnum__,  // Endpoint numbering starts at 1
 
 #ifndef KEYBOARD_SHARED_EP
-    KEYBOARD_IN_EPNUM = NEXT_EPNUM,
+    KEYBOARD_IN_EPNUM,
 #else
 #    define KEYBOARD_IN_EPNUM SHARED_IN_EPNUM
 #endif
 
 #if defined(MOUSE_ENABLE) && !defined(MOUSE_SHARED_EP)
-    MOUSE_IN_EPNUM = NEXT_EPNUM,
+    MOUSE_IN_EPNUM,
 #else
 #    define MOUSE_IN_EPNUM SHARED_IN_EPNUM
 #endif
 
 #ifdef RAW_ENABLE
-    RAW_IN_EPNUM = NEXT_EPNUM,
+    RAW_IN_EPNUM,
 #    if STM32_USB_USE_OTG1
 #        define RAW_OUT_EPNUM RAW_IN_EPNUM
 #    else
-    RAW_OUT_EPNUM         = NEXT_EPNUM,
+    RAW_OUT_EPNUM,
 #    endif
 #endif
 
 #ifdef SHARED_EP_ENABLE
-    SHARED_IN_EPNUM = NEXT_EPNUM,
+    SHARED_IN_EPNUM,
 #endif
 
 #ifdef CONSOLE_ENABLE
-    CONSOLE_IN_EPNUM = NEXT_EPNUM,
+    CONSOLE_IN_EPNUM,
 
 #    ifdef PROTOCOL_CHIBIOS
 // ChibiOS has enough memory and descriptor to actually enable the endpoint
@@ -226,7 +225,7 @@ enum usb_endpoints {
 #        if STM32_USB_USE_OTG1
 #            define CONSOLE_OUT_EPNUM CONSOLE_IN_EPNUM
 #        else
-    CONSOLE_OUT_EPNUM = NEXT_EPNUM,
+    CONSOLE_OUT_EPNUM,
 #        endif
 #    else
 #        define CONSOLE_OUT_EPNUM CONSOLE_IN_EPNUM
@@ -234,31 +233,32 @@ enum usb_endpoints {
 #endif
 
 #ifdef MIDI_ENABLE
-    MIDI_STREAM_IN_EPNUM = NEXT_EPNUM,
+    MIDI_STREAM_IN_EPNUM,
 #    if STM32_USB_USE_OTG1
 #        define MIDI_STREAM_OUT_EPNUM MIDI_STREAM_IN_EPNUM
 #    else
-    MIDI_STREAM_OUT_EPNUM = NEXT_EPNUM,
+    MIDI_STREAM_OUT_EPNUM,
 #    endif
 #endif
 
 #ifdef VIRTSER_ENABLE
-    CDC_NOTIFICATION_EPNUM = NEXT_EPNUM,
-    CDC_IN_EPNUM           = NEXT_EPNUM,
+    CDC_NOTIFICATION_EPNUM,
+    CDC_IN_EPNUM,
 #    if STM32_USB_USE_OTG1
 #        define CDC_OUT_EPNUM CDC_IN_EPNUM
 #    else
-    CDC_OUT_EPNUM         = NEXT_EPNUM,
+    CDC_OUT_EPNUM,
 #    endif
 #endif
 #ifdef JOYSTICK_ENABLE
-    JOYSTICK_IN_EPNUM = NEXT_EPNUM,
+    JOYSTICK_IN_EPNUM,
 #    if STM32_USB_USE_OTG1
-    JOYSTICK_OUT_EPNUM = JOYSTICK_IN_EPNUM,
+#        define JOYSTICK_OUT_EPNUM JOYSTICK_IN_EPNUM
 #    else
-    JOYSTICK_OUT_EPNUM    = NEXT_EPNUM,
+    JOYSTICK_OUT_EPNUM,
 #    endif
 #endif
+    NEXT_EPNUM
 };
 
 #ifdef PROTOCOL_LUFA
@@ -274,9 +274,9 @@ enum usb_endpoints {
 
 // TODO - ARM_ATSAM
 
-#if (NEXT_EPNUM - 1) > MAX_ENDPOINTS
-#    error There are not enough available endpoints to support all functions. Please disable one or more of the following: Mouse Keys, Extra Keys, Console, NKRO, MIDI, Serial, Steno
-#endif
+_Static_assert((NEXT_EPNUM - 1) <= MAX_ENDPOINTS,
+    "There are not enough available endpoints to support all functions. "
+    "Please disable one or more of the following: Mouse Keys, Extra Keys, Console, NKRO, MIDI, Serial, Steno");
 
 #define KEYBOARD_EPSIZE 8
 #define SHARED_EPSIZE 32
