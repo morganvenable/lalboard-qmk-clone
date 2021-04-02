@@ -155,8 +155,12 @@ enum usb_interfaces {
     RAW_INTERFACE,
 #endif
 
-#if defined(MOUSE_ENABLE) && !defined(MOUSE_SHARED_EP)
+#if defined(MOUSE_ENABLE)
+#    if !defined(MOUSE_SHARED_EP)
     MOUSE_INTERFACE,
+#    else
+#        define MOUSE_INTERFACE SHARED_INTERFACE
+#    endif
 #endif
 
 #if defined(SHARED_EP_ENABLE) && !defined(KEYBOARD_SHARED_EP)
