@@ -106,7 +106,7 @@ enum desktop_usages {
 #define NKRO_SHARED_EP
 /* key report size(NKRO or boot mode) */
 #if defined(NKRO_ENABLE)
-#    if defined(PROTOCOL_LUFA) || defined(PROTOCOL_CHIBIOS)
+#    if defined(PROTOCOL_LUFA) || defined(PROTOCOL_CHIBIOS) || defined(PROTOCOL_TINYUSB)
 #        include "protocol/usb_descriptor.h"
 #        define KEYBOARD_REPORT_BITS (SHARED_EPSIZE - 2)
 #    elif defined(PROTOCOL_ARM_ATSAM)

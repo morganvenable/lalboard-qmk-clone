@@ -25,6 +25,11 @@ static uint8_t keyboard_led_state = 0;
 
 static report_keyboard_t current_keyboard_report;
 
+#ifdef NKRO_ENABLE
+#    include "keycode_config.h"
+extern keymap_config_t keymap_config;
+#endif
+
 // TODO(jesusfreke): add support for GET_REPORT for the other interfaces as well
 
 // static task for usbd
@@ -54,6 +59,9 @@ int main(void) __attribute__((weak));
 
 // The entry point for an esp-idf project
 void app_main(void) {
+    printf("in app_main (printf)");
+    print("in app_main (print)");
+
     main();
 }
 
@@ -204,7 +212,16 @@ uint8_t keyboard_leds(void) {
 }
 
 void send_keyboard(report_keyboard_t *report) {
+
     uint8_t itf_index = tud_hid_itf_num_to_index(KEYBOARD_INTERFACE);
+    size_t report_size = sizeof(report_keyboard_t);
+
+#ifdef NKRO_ENABLE
+    if (keyboard_protocol && keymap_config.nkro) {
+        itf_index = tud_hid_itf_num_to_index(SHARED_INTERFACE);;
+        report_size = sizeof(struct nkro_report);
+    }
+#endif
 
     if ( !tud_hid_n_ready(itf_index) ) return;
 
@@ -219,11 +236,13 @@ void send_keyboard(report_keyboard_t *report) {
         // of the report
         0,
         report,
-        sizeof(report_keyboard_t));
+        report_size);
 }
 
 
 void send_mouse(report_mouse_t *report) {
+
+
     // TODO(jesusfreke): implement this
 }
 
