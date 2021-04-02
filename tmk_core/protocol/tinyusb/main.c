@@ -204,14 +204,15 @@ uint8_t keyboard_leds(void) {
 }
 
 void send_keyboard(report_keyboard_t *report) {
+    uint8_t itf_index = tud_hid_itf_num_to_index(KEYBOARD_INTERFACE);
 
-    if ( !tud_hid_ready() ) return;
+    if ( !tud_hid_n_ready(itf_index) ) return;
 
     ESP_LOGE("app", "send_keyboard %d", sizeof(report_keyboard_t));
     //printf("report size: %d", );
 
     tud_hid_n_report(
-        tud_hid_itf_num_to_index(KEYBOARD_INTERFACE),
+        itf_index,
         // Since our report already includes the report id if needed,
         // the report id here should be 0. Otherwise, tud_hid_n_report
         // will add a duplicate report_id field to the beginning
