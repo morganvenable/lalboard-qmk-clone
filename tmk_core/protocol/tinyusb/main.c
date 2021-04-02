@@ -255,12 +255,36 @@ void send_mouse(report_mouse_t *report) {
 #endif
 }
 
+#ifdef EXTRAKEY_ENABLE
+static void send_extra(uint8_t report_id, uint16_t data) {
+    uint8_t itf_index = tud_hid_itf_num_to_index(SHARED_INTERFACE);
+
+    if (!tud_hid_n_ready(itf_index)) return;
+
+    report_extra_t report = {.report_id = report_id, .usage = data};
+
+    tud_hid_n_report(
+        itf_index,
+        // Since our report already includes the report id if needed,
+        // the report id here should be 0. Otherwise, tud_hid_n_report
+        // will add a duplicate report_id field to the beginning
+        // of the report
+        0,
+        &report,
+        sizeof(report));
+}
+#endif
+
 void send_system(uint16_t data) {
-    // TODO(jesusfreke): implement this
+#ifdef EXTRAKEY_ENABLE
+    send_extra(REPORT_ID_SYSTEM, data);
+#endif
 }
 
 void send_consumer(uint16_t data) {
-    // TODO(jesusfreke): implement this
+#ifdef EXTRAKEY_ENABLE
+    send_extra(REPORT_ID_CONSUMER, data);
+#endif
 }
 
 int tinyusb_printf(const char *format, ...) {
