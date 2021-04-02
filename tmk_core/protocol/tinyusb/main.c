@@ -212,7 +212,6 @@ uint8_t keyboard_leds(void) {
 }
 
 void send_keyboard(report_keyboard_t *report) {
-
     uint8_t itf_index = tud_hid_itf_num_to_index(KEYBOARD_INTERFACE);
     size_t report_size = sizeof(report_keyboard_t);
 
@@ -223,10 +222,7 @@ void send_keyboard(report_keyboard_t *report) {
     }
 #endif
 
-    if ( !tud_hid_n_ready(itf_index) ) return;
-
-    ESP_LOGE("app", "send_keyboard %d", sizeof(report_keyboard_t));
-    //printf("report size: %d", );
+    if (!tud_hid_n_ready(itf_index)) return;
 
     tud_hid_n_report(
         itf_index,
@@ -241,9 +237,22 @@ void send_keyboard(report_keyboard_t *report) {
 
 
 void send_mouse(report_mouse_t *report) {
+#ifdef MOUSE_ENABLE
+    uint8_t itf_index = tud_hid_itf_num_to_index(MOUSE_INTERFACE);
+    size_t report_size = sizeof(report_mouse_t);
 
+    if (!tud_hid_n_ready(itf_index)) return;
 
-    // TODO(jesusfreke): implement this
+    tud_hid_n_report(
+        itf_index,
+        // Since our report already includes the report id if needed,
+        // the report id here should be 0. Otherwise, tud_hid_n_report
+        // will add a duplicate report_id field to the beginning
+        // of the report
+        0,
+        report,
+        report_size);
+#endif
 }
 
 void send_system(uint16_t data) {
