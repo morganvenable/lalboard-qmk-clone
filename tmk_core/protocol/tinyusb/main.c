@@ -190,6 +190,15 @@ uint16_t const* tud_descriptor_string_cb(uint8_t index, uint16_t langid) {
     return descriptor;
 }
 
+void tud_hid_boot_mode_cb(uint8_t itf, uint8_t boot_mode) {
+    uint8_t itf_num = tud_hid_itf_index_to_num(itf);
+
+    if (itf_num == KEYBOARD_INTERFACE) {
+        keyboard_protocol = boot_mode ? 0 : 1;
+        clear_keyboard();
+    }
+}
+
 uint8_t keyboard_leds(void) {
     return keyboard_led_state;
 }
