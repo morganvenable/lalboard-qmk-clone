@@ -33,8 +33,8 @@
 void print_set_sendchar(sendchar_func_t func);
 
 #ifndef NO_PRINT
-#    if __has_include_next("_print.h")
-#        include_next "_print.h" /* Include the platforms print.h */
+#    if __has_include("_print.h")
+#        include "_print.h" /* Include the platforms print.h */
 #    else
 // Fall back to lib/printf
 #        include "printf.h"  // lib/printf/printf.h
