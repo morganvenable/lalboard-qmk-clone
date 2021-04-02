@@ -268,8 +268,8 @@ enum usb_endpoints {
 // ChibiOS gives us number of available user endpoints, not control
 #    define MAX_ENDPOINTS USB_MAX_ENDPOINTS
 #elif defined(PROTOCOL_TINYUSB)
-// TODO(jesusfreke): fake value for now, just to get it to compile
-#    define MAX_ENDPOINTS 32
+// esp32s2 gives us 6 total user endpoints, with up to 4 of them being input.
+#    define MAX_ENDPOINTS 6
 #endif
 
 // TODO - ARM_ATSAM
