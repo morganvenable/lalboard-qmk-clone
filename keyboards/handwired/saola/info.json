@@ -1,6 +1,6 @@
 {
-    "keyboard_name": "lalboard",
-    "url": "https://lalboard.com",
+    "keyboard_name": "saola",
+    "url": "https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-saola-1-v1.2.html",
     "maintainer": "JesusFreke",
     "width": 1,
     "height": 1,

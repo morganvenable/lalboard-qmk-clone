@@ -18,12 +18,12 @@
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-/* Taken from the DataHand PS/2-USB adaptor. */
-#define VENDOR_ID       0x13BA
-#define PRODUCT_ID      0x0017
+/* VID/PID from esp-idf's default tinyusb configuration */
+#define VENDOR_ID       0x303A
+#define PRODUCT_ID      0x4004
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    JesusFreke
-#define PRODUCT         lalboard
+#define MANUFACTURER    espressif
+#define PRODUCT         saola
 
 /* key matrix size */
 #define MATRIX_ROWS 1

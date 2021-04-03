@@ -13,7 +13,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "lalboard.h"
+#include "saola.h"
 
 #include "matrix.h"
 #include "action.h"
