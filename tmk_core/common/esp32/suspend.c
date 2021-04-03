@@ -3,9 +3,11 @@
 
 #include "action_util.h"
 
+#include "esp_sleep.h"
 #include "host.h"
 #include "led.h"
 #include "matrix.h"
+#include "print.h"
 
 #ifdef AUDIO_ENABLE
 #    include "audio.h"
@@ -26,6 +28,9 @@
 void suspend_idle(uint8_t timeout) {
     // not used
 }
+
+__attribute__((weak)) void matrix_power_up(void) {}
+__attribute__((weak)) void matrix_power_down(void) {}
 
 __attribute__((weak)) void suspend_power_down_user(void) {}
 __attribute__((weak)) void suspend_power_down_kb(void) { suspend_power_down_user(); }
@@ -59,13 +64,20 @@ void suspend_power_down(void) {
     rgblight_suspend();
 #    endif
 
-    // TODO(jesusfreke): power down, and set a wakeup timer..
+    matrix_power_down();
+
+    uint64_t sleep_time_ms = 15;
+    if (esp_sleep_enable_timer_wakeup(sleep_time_ms * 1000) != ESP_OK) {
+        print("suspend_power_down: failed to enable timer wakeup.\n");
+        return;
+    };
+    if (esp_light_sleep_start() != ESP_OK) {
+        print("suspend_power_down: failed to enter light sleep.\n");
+    }
 #endif
 }
 
-__attribute__((weak)) void matrix_power_up(void) {}
-__attribute__((weak)) void matrix_power_down(void) {}
-bool                       suspend_wakeup_condition(void) {
+bool suspend_wakeup_condition(void) {
     matrix_power_up();
     matrix_scan();
     matrix_power_down();
@@ -102,5 +114,6 @@ void suspend_wakeup_init(void) {
 #if defined(RGBLIGHT_SLEEP) && defined(RGBLIGHT_ENABLE)
     rgblight_wakeup();
 #endif
+    matrix_power_up();
     suspend_wakeup_init_kb();
 }
