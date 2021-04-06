@@ -59,9 +59,6 @@ int main(void) __attribute__((weak));
 
 // The entry point for an esp-idf project
 void app_main(void) {
-    printf("in app_main (printf)");
-    print("in app_main (print)");
-
     main();
 }
 
