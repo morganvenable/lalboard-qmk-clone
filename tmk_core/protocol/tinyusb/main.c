@@ -101,7 +101,18 @@ int main(void) {
     }
 }
 
+__attribute__((weak)) bool suspend_task_user(void) {
+    return false;
+}
+
+__attribute__((weak)) bool suspend_task_kb(void) {
+    return suspend_task_user();
+}
+
 void suspend_task() {
+    if (suspend_task_kb()) {
+        return;
+    }
 
     // Remote wakeup
     if (tud_suspended()) {
