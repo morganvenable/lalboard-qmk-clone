@@ -63,12 +63,17 @@ void app_main(void) {
 }
 
 int main(void) {
+    keyboard_setup();
+
+    // initialize tinyusb
     board_init();
 
     host_set_driver(&esp_idf_driver);
 
     // Create a task for tinyusb device stack
     (void) xTaskCreateStatic( usb_device_task, "usbd", USBD_STACK_SIZE, NULL, configMAX_PRIORITIES-1, usb_device_stack, &usb_device_taskdef);
+
+    keyboard_init();
 
     print("Keyboard start.\n");
     while (true) {
