@@ -16,9 +16,10 @@ UNICODE_ENABLE    = no     # Unicode
 BLUETOOTH_ENABLE  = no     # Enable Bluetooth with the Adafruit EZ-Key HID
 AUDIO_ENABLE      = no     # Audio output on port C6
 CUSTOM_MATRIX     = yes    # Some pins have inverted logic
-SPLIT_KEYBOARD    = no     # Enable split keyboard
+SPLIT_KEYBOARD    = no     # yes, but we don't use any of qmk's logic for this
+SLEEP_LED_ENABLE = no      # Breathing sleep LED during USB suspend
 
-SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
+NO_USB_STARTUP_CHECK = yes # TODO(jesusfreke) implement support for split suspend
 
 # Project specific files
 SRC = matrix.c

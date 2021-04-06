@@ -19,16 +19,20 @@
  * IN THE SOFTWARE.
  */
 
+#include <stdint.h>
+#include <stdbool.h>
+
 #include "lalboard.h"
 #include "config.h"
 
 #include "action.h"
 #include "gpio.h"
+#include "keyboard.h"
 #include "matrix.h"
 #include "print.h"
 
-#include <stdint.h>
-#include <stdbool.h>
+#include "driver/uart.h"
+#include "esp_err.h"
 
 static matrix_row_t current_matrix[MATRIX_ROWS];
 
@@ -38,6 +42,14 @@ static const uint8_t col_pushed_states[MATRIX_COLS] = MATRIX_COL_PUSHED_STATES;
 
 matrix_row_t matrix_get_row(uint8_t row) {
     return current_matrix[row];
+}
+
+uint8_t get_first_local_row(void) {
+    return is_keyboard_left() ? 0 : (MATRIX_ROWS/2);
+}
+
+uint8_t get_first_remote_row(void) {
+    return is_keyboard_left() ? (MATRIX_ROWS/2) : 0;
 }
 
 void matrix_print(void) {
@@ -67,12 +79,12 @@ __attribute__((weak)) void matrix_init_kb(void) { matrix_init_user(); }
 __attribute__((weak)) void matrix_init_user(void) {}
 
 void matrix_init(void) {
-    for (int row = 0; row < MATRIX_ROWS; row++) {
+    for (int row = 0; row < sizeof(row_pins)/sizeof(pin_t); row++) {
         setPinOutput(row_pins[row]);
         writePin(row_pins[row], 0);
     }
 
-    for (int col = 0; col < MATRIX_COLS; col++) {
+    for (int col = 0; col < sizeof(col_pins)/sizeof(pin_t); col++) {
         setPinInput(col_pins[col]);
     }
 
@@ -98,17 +110,60 @@ matrix_row_t read_row(void) {
     return row;
 }
 
+bool read_remote_matrix(void) {
+    bool changed = false;
+
+    uint8_t buf[32];
+    int bytes_read = uart_read_bytes(SPLIT_TRANSPORT_UART_NUM, buf, sizeof(buf), 0);
+
+    uint8_t first_remote_row = get_first_remote_row();
+    for (int i = 0; i < bytes_read; i++) {
+        uint8_t row_data = buf[i];
+        uint8_t remote_row_index = (row_data >> 5);
+        matrix_row_t new_remote_row = remote_row_index & 0b00011111;
+
+        uint8_t global_row_index = first_remote_row + remote_row_index;
+        changed |= new_remote_row != current_matrix[global_row_index];
+    }
+
+    return changed;
+}
+
+void send_local_matrix(void) {
+    uint8_t buf[5];
+    int first_local_row = get_first_local_row();
+    for (int local_row_index = 0; local_row_index < MATRIX_ROWS/2; local_row_index++) {
+        int global_row_index = first_local_row + local_row_index;
+        buf[local_row_index] = (local_row_index << 5) | (current_matrix[global_row_index] & 0b00011111);
+    }
+
+    size_t bytes_written = uart_write_bytes(SPLIT_TRANSPORT_UART_NUM, buf, sizeof(buf));
+    if (bytes_written != sizeof(buf)) {
+        printf("Wrote an unexpected number of bytes to the uart: %d\n", bytes_written);
+    }
+}
+
 uint8_t matrix_scan(void) {
     bool changed = false;
 
-    for (int row = 0; row < MATRIX_ROWS; row++) {
-        int row_pin = row_pins[row];
+    int first_local_row = get_first_local_row();
+
+    for (int local_row = 0; local_row < MATRIX_ROWS / 2; local_row++) {
+        pin_t row_pin = row_pins[local_row];
         writePin(row_pin, 1);
         wait_us(15);
 
+        uint8_t global_row = first_local_row + local_row;
+
         matrix_row_t new_row = read_row();
-        changed |= new_row != current_matrix[row];
-        current_matrix[row] = new_row;
+        changed |= new_row != current_matrix[global_row];
+        current_matrix[global_row] = new_row;
+    }
+
+    if (is_keyboard_master()) {
+        changed |= read_remote_matrix();
+    } else {
+        send_local_matrix();
     }
 
     matrix_scan_quantum();
