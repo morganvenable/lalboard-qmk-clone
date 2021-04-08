@@ -4,7 +4,7 @@
 void setPinInput(pin_t pin) {
     gpio_config_t config;
 
-    config.pin_bit_mask = 1 << pin;
+    config.pin_bit_mask = (uint64_t)((uint64_t)1) << pin;
     config.mode = GPIO_MODE_INPUT;
     config.pull_down_en = GPIO_PULLDOWN_DISABLE;
     config.pull_up_en = GPIO_PULLUP_DISABLE;
@@ -16,7 +16,7 @@ void setPinInput(pin_t pin) {
 void setPinInputHigh(pin_t pin) {
     gpio_config_t config;
 
-    config.pin_bit_mask = 1 << pin;
+    config.pin_bit_mask = (uint64_t)((uint64_t)1) << pin;
     config.mode = GPIO_MODE_INPUT;
     config.pull_down_en = GPIO_PULLDOWN_DISABLE;
     config.pull_up_en = GPIO_PULLUP_ENABLE;
@@ -28,7 +28,7 @@ void setPinInputHigh(pin_t pin) {
 void setPinInputLow(pin_t pin) {
     gpio_config_t config;
 
-    config.pin_bit_mask = 1 << pin;
+    config.pin_bit_mask = (uint64_t)((uint64_t)1) << pin;
     config.mode = GPIO_MODE_INPUT;
     config.pull_down_en = GPIO_PULLDOWN_ENABLE;
     config.pull_up_en = GPIO_PULLUP_DISABLE;
@@ -40,7 +40,7 @@ void setPinInputLow(pin_t pin) {
 void setPinOutput(pin_t pin) {
     gpio_config_t config;
 
-    config.pin_bit_mask = 1 << pin;
+    config.pin_bit_mask = (uint64_t)((uint64_t)1) << pin;
     config.mode = GPIO_MODE_INPUT_OUTPUT;
     config.pull_down_en = GPIO_PULLDOWN_DISABLE;
     config.pull_up_en = GPIO_PULLUP_DISABLE;
