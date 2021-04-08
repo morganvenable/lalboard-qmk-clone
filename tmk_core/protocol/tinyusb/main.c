@@ -8,6 +8,7 @@
 #include "bsp/board.h"
 #include "class/hid/hid_device.h"
 #include "debug.h"
+#include "eeprom_driver.h"
 #include "esp_log.h"
 #include "keyboard.h"
 #include "host.h"
@@ -63,6 +64,8 @@ void app_main(void) {
 }
 
 int main(void) {
+    eeprom_driver_init();
+
     keyboard_setup();
 
     // initialize tinyusb

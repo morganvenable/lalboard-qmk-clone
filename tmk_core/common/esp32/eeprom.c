@@ -24,10 +24,9 @@ static const char *eeprom_path = "/eeprom/eeprom";
 
 void eeprom_driver_init(void) {
     const esp_vfs_fat_mount_config_t mount_config = {
-            .max_files = 1,
+            .max_files = 4,
             .format_if_mount_failed = true,
-            // 0 to indicate wear leveling sector size should be used (CONFIG_WL_SECTOR_SIZE)
-            .allocation_unit_size = 0
+            .allocation_unit_size = CONFIG_WL_SECTOR_SIZE
     };
 
     esp_err_t err = esp_vfs_fat_spiflash_mount(mount_path, "eeprom", &mount_config, &partition_handle);
