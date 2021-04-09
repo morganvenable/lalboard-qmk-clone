@@ -229,7 +229,7 @@ uint8_t keyboard_leds(void) {
 
 void send_keyboard(report_keyboard_t *report) {
     uint8_t itf_index = tud_hid_itf_num_to_index(KEYBOARD_INTERFACE);
-    size_t report_size = sizeof(report_keyboard_t);
+    size_t report_size = KEYBOARD_REPORT_SIZE;
 
 #ifdef NKRO_ENABLE
     if (keyboard_protocol && keymap_config.nkro) {
