@@ -36,15 +36,15 @@
     ltd, lti, ltu, ltuo, ltlo) \
 { \
     {r1d, r1n, r1e, r1s, r1w}, \
-    {r2d, r2n, r2e, r2s, r2w}, \
-    {r3d, r3n, r3e, r3s, r3w}, \
-    {r4d, r4n, r4e, r4s, r4w}, \
-    {rtd, rti, rtu, rtuo, rtlo}, \
+    /*{r2d, r2n, r2e, r2s, r2w},*/ \
+    /*{r3d, r3n, r3e, r3s, r3w},*/ \
+    /*{r4d, r4n, r4e, r4s, r4w},*/ \
+    /*{rtd, rti, rtu, rtuo, rtlo},*/ \
     {l1d, l1n, l1e, l1s, l1w}, \
-    {l2d, l2n, l2e, l2s, l2w}, \
-    {l3d, l3n, l3e, l3s, l3w}, \
-    {l4d, l4n, l4e, l4s, l4w}, \
-    {ltd, lti, ltu, ltuo, ltlo} \
+    /*{l2d, l2n, l2e, l2s, l2w},*/ \
+    /*{l3d, l3n, l3e, l3s, l3w},*/ \
+    /*{l4d, l4n, l4e, l4s, l4w},*/ \
+    /*{ltd, lti, ltu, ltuo, ltlo}*/ \
 }
 
 #define SPLIT_TRANSPORT_UART_NUM 1

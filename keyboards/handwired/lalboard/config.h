@@ -31,13 +31,13 @@
 #define MANUFACTURER    JesusFreke
 #define PRODUCT         lalboard
 
-#define MATRIX_ROWS 10
+#define MATRIX_ROWS 2
 /* key matrix size (for 1 side) */
 #define LOCAL_MATRIX_ROWS (MATRIX_ROWS / 2)
 #define MATRIX_COLS 5
 
-#define MATRIX_ROW_PINS { 0, 1, 2, 3, 4 }
-#define MATRIX_COL_PINS { 5, 6, 7, 8, 9 }
+#define MATRIX_ROW_PINS { 38 }
+#define MATRIX_COL_PINS { 40, 41, 42, 45, 46 }
 
 // The column with the "down" keys on both the normal and thumb clusters
 // is inverted.
