@@ -36,7 +36,7 @@
 
 static matrix_row_t current_matrix[MATRIX_ROWS];
 
-static const pin_t row_pins[MATRIX_ROWS] = MATRIX_ROW_PINS;
+static const pin_t row_pins[LOCAL_MATRIX_ROWS] = MATRIX_ROW_PINS;
 static const pin_t col_pins[MATRIX_COLS] = MATRIX_COL_PINS;
 static const uint8_t col_pushed_states[MATRIX_COLS] = MATRIX_COL_PUSHED_STATES;
 
@@ -45,11 +45,11 @@ matrix_row_t matrix_get_row(uint8_t row) {
 }
 
 uint8_t get_first_local_row(void) {
-    return is_keyboard_left() ? 0 : (MATRIX_ROWS/2);
+    return is_keyboard_left() ? 0 : (LOCAL_MATRIX_ROWS);
 }
 
 uint8_t get_first_remote_row(void) {
-    return is_keyboard_left() ? (MATRIX_ROWS/2) : 0;
+    return is_keyboard_left() ? (LOCAL_MATRIX_ROWS) : 0;
 }
 
 void matrix_print(void) {
@@ -130,9 +130,9 @@ bool read_remote_matrix(void) {
 }
 
 void send_local_matrix(void) {
-    uint8_t buf[5];
+    uint8_t buf[LOCAL_MATRIX_ROWS];
     int first_local_row = get_first_local_row();
-    for (int local_row_index = 0; local_row_index < MATRIX_ROWS/2; local_row_index++) {
+    for (int local_row_index = 0; local_row_index < LOCAL_MATRIX_ROWS; local_row_index++) {
         int global_row_index = first_local_row + local_row_index;
         buf[local_row_index] = (local_row_index << 5) | (current_matrix[global_row_index] & 0b00011111);
     }
@@ -148,7 +148,7 @@ uint8_t matrix_scan(void) {
 
     int first_local_row = get_first_local_row();
 
-    for (int local_row = 0; local_row < MATRIX_ROWS / 2; local_row++) {
+    for (int local_row = 0; local_row < LOCAL_MATRIX_ROWS; local_row++) {
         pin_t row_pin = row_pins[local_row];
         writePin(row_pin, 1);
         wait_us(15);
@@ -171,7 +171,7 @@ uint8_t matrix_scan(void) {
 }
 
 void matrix_power_down(void) {
-    for (int row = 0; row < MATRIX_ROWS; row++) {
+    for (int row = 0; row < LOCAL_MATRIX_ROWS; row++) {
         int row_pin = row_pins[row];
         writePin(row_pin, 0);
         wait_us(15);

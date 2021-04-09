@@ -31,8 +31,9 @@
 #define MANUFACTURER    JesusFreke
 #define PRODUCT         lalboard
 
-/* key matrix size */
 #define MATRIX_ROWS 10
+/* key matrix size (for 1 side) */
+#define LOCAL_MATRIX_ROWS (MATRIX_ROWS / 2)
 #define MATRIX_COLS 5
 
 #define MATRIX_ROW_PINS { 0, 1, 2, 3, 4 }
