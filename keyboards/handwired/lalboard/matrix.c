@@ -158,6 +158,7 @@ uint8_t matrix_scan(void) {
         matrix_row_t new_row = read_row();
         changed |= new_row != current_matrix[global_row];
         current_matrix[global_row] = new_row;
+        writePin(row_pin, 0);
     }
 
     if (is_keyboard_master()) {
