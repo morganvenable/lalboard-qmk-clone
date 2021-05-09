@@ -37,11 +37,11 @@
 #define MATRIX_COLS 5
 
 #define MATRIX_ROW_PINS { 38 }
-#define MATRIX_COL_PINS { 40, 41, 42, 45, 46 }
+#define MATRIX_COL_PINS { 40, 41, 42, 39, 46 }
 
 // The column with the "down" keys on both the normal and thumb clusters
 // is inverted.
-#define MATRIX_COL_PUSHED_STATES { 1, 1, 0, 1, 1 }
+#define MATRIX_COL_PUSHED_STATES { 0, 0, 1, 0, 0 }
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 0
