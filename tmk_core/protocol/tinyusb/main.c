@@ -318,6 +318,30 @@ void send_consumer(uint16_t data) {
 #endif
 }
 
+#ifdef CONSOLE_ENABLE
+int8_t sendchar(uint8_t c) {
+    uint8_t itf_index = tud_hid_itf_num_to_index(CONSOLE_INTERFACE);
+
+    int i = 0;
+
+    while (!tud_hid_n_ready(itf_index)) {
+        if (++i > 100) {
+            return -1;
+        }
+        wait_us(10);
+
+    }
+
+    tud_hid_n_report(
+        itf_index,
+        0,
+        &c,
+        1);
+
+    return 0;
+}
+#endif
+
 int tinyusb_printf(const char *format, ...) {
     va_list args;
     va_start(args, format);
