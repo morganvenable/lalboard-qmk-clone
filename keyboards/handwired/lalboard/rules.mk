@@ -23,3 +23,9 @@ NO_USB_STARTUP_CHECK = yes # TODO(jesusfreke) implement support for split suspen
 
 # Project specific files
 SRC = matrix.c
+
+ifeq (left, ${SIDE})
+    CFLAGS += -DMASTER_LEFT
+else
+    CFLAGS += -DMASTER_RIGHT
+endif

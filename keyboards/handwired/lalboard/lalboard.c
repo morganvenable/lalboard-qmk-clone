@@ -129,6 +129,9 @@ bool is_keyboard_master(void) {
 }
 
 bool is_keyboard_left(void) {
-    // TODO(jesusfreke): implement
+#ifdef MASTER_LEFT
     return true;
+#else
+    return false;
+#endif
 }
