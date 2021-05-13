@@ -262,6 +262,8 @@ void send_keyboard(report_keyboard_t *report) {
         0,
         report,
         report_size);
+
+    current_keyboard_report = *report;
 }
 
 
