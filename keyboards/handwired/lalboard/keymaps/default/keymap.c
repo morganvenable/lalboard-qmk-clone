@@ -57,9 +57,9 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L3*/ KC_O,            KC_COMMA,       KC_X,           KC_K,           KC_ESC,
         /*L4*/ KC_A,            KC_SLASH,       KC_LEFT_PAREN,  KC_SCOLON,      KC_DEL,
 
-             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+        /*Down             Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ MO(NAS),         KC_SPACE,       DF(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_RETURN,      DF(NORMAL),     KC_TAB,         KC_LCTRL
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       DF(NORMAL),     KC_TAB,         KC_LCTRL
     ),
 
     [NORMAL_HOLD] = LAYOUT(
