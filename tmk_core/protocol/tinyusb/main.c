@@ -17,6 +17,7 @@
 #include "suspend.h"
 #include "tusb.h"
 #include "usb_descriptor.h"
+#include "wait.h"
 
 #include <LUFA/Drivers/USB/USB.h>
 
@@ -227,6 +228,18 @@ uint8_t keyboard_leds(void) {
     return keyboard_led_state;
 }
 
+bool wait_for_hid_ready(uint8_t itf_index) {
+    /* Check if write ready for a polling interval around 10ms */
+    uint8_t timeout = 255;
+    while (timeout--) {
+        if (tud_hid_n_ready(itf_index)) {
+            return true;
+        }
+        wait_us(40);
+    }
+    return false;
+}
+
 void send_keyboard(report_keyboard_t *report) {
     uint8_t itf_index = tud_hid_itf_num_to_index(KEYBOARD_INTERFACE);
     size_t report_size = KEYBOARD_REPORT_SIZE;
@@ -238,7 +251,7 @@ void send_keyboard(report_keyboard_t *report) {
     }
 #endif
 
-    if (!tud_hid_n_ready(itf_index)) return;
+    if (!wait_for_hid_ready(itf_index)) return;
 
     tud_hid_n_report(
         itf_index,
@@ -257,7 +270,7 @@ void send_mouse(report_mouse_t *report) {
     uint8_t itf_index = tud_hid_itf_num_to_index(MOUSE_INTERFACE);
     size_t report_size = sizeof(report_mouse_t);
 
-    if (!tud_hid_n_ready(itf_index)) return;
+    if (!wait_for_hid_ready(itf_index)) return;
 
     tud_hid_n_report(
         itf_index,
@@ -275,7 +288,7 @@ void send_mouse(report_mouse_t *report) {
 static void send_extra(uint8_t report_id, uint16_t data) {
     uint8_t itf_index = tud_hid_itf_num_to_index(SHARED_INTERFACE);
 
-    if (!tud_hid_n_ready(itf_index)) return;
+    if (!wait_for_hid_ready(itf_index)) return;
 
     report_extra_t report = {.report_id = report_id, .usage = data};
 
