@@ -75,8 +75,11 @@ void keyboard_post_init_kb(void) {
         return;
     }
 
+    // We invert the RX/TX pins on the left side
     err = uart_set_pin(
-        SPLIT_TRANSPORT_UART_NUM, SPLIT_TRANSPORT_UART_TX, SPLIT_TRANSPORT_UART_RX,
+        SPLIT_TRANSPORT_UART_NUM,
+        is_keyboard_left() ? SPLIT_TRANSPORT_UART_RX : SPLIT_TRANSPORT_UART_TX,
+        is_keyboard_left() ? SPLIT_TRANSPORT_UART_TX : SPLIT_TRANSPORT_UART_RX,
         UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
     if (err != ESP_OK) {
         printf("Error while configuring serial pins: %s\n", esp_err_to_name(err));

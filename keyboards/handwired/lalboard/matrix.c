@@ -120,10 +120,11 @@ bool read_remote_matrix(void) {
     for (int i = 0; i < bytes_read; i++) {
         uint8_t row_data = buf[i];
         uint8_t remote_row_index = (row_data >> 5);
-        matrix_row_t new_remote_row = remote_row_index & 0b00011111;
+        matrix_row_t new_remote_row = row_data & 0b00011111;
 
         uint8_t global_row_index = first_remote_row + remote_row_index;
         changed |= new_remote_row != current_matrix[global_row_index];
+        current_matrix[global_row_index] = new_remote_row;
     }
 
     return changed;
@@ -165,7 +166,7 @@ uint8_t matrix_scan(void) {
 
     if (is_keyboard_master()) {
         changed |= read_remote_matrix();
-    } else {
+    } else if (changed) {
         send_local_matrix();
     }
 
