@@ -45,11 +45,11 @@ matrix_row_t matrix_get_row(uint8_t row) {
 }
 
 uint8_t get_first_local_row(void) {
-    return is_keyboard_left() ? 0 : (LOCAL_MATRIX_ROWS);
+    return is_keyboard_left() ? (LOCAL_MATRIX_ROWS) : 0;
 }
 
 uint8_t get_first_remote_row(void) {
-    return is_keyboard_left() ? (LOCAL_MATRIX_ROWS) : 0;
+    return is_keyboard_left() ? 0 : (LOCAL_MATRIX_ROWS);
 }
 
 void matrix_print(void) {
