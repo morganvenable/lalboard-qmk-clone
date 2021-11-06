@@ -50,6 +50,9 @@ static primary_t primary_status;
 
 void keyboard_post_init_kb(void) {
 
+    //debug_enable = true;
+    //debug_matrix = true;
+
     uart_config_t uart_config = {
         .baud_rate = 1000000,
         .data_bits = UART_DATA_8_BITS,
