@@ -35,10 +35,10 @@
     rtd, rti, rtu, rtuo, rtlo, \
     ltd, lti, ltu, ltuo, ltlo) \
 { \
+    {r1e, r1n, r1d, r1s, r1w}, \
     {r2e, r2n, r2d, r2s, r2w}, \
     {r3e, r3n, r3d, r3s, r3w}, \
     {r4e, r4n, r4d, r4s, r4w}, \
-    {r1e, r1n, r1d, r1s, r1w}, \
     {rtlo,rtuo,rtd, rti, rtu}, \
     {l1e, l1n, l1d, l1s, l1w}, \
     {l2e, l2n, l2d, l2s, l2w}, \
