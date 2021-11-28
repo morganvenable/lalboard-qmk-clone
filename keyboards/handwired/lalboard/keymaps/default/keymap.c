@@ -190,7 +190,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_NORMAL_HOLD:
       if (record->event.pressed) {
           layer_clear();
-          default_layer_set(NORMAL);
+          default_layer_set(1 >> NORMAL);
           layer_on(NORMAL_HOLD);
       } else {
           layer_off(NORMAL_HOLD);
@@ -199,7 +199,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_GAME_HOLD:
       if (record->event.pressed) {
           layer_clear();
-          default_layer_set(GAME);
+          default_layer_set(1 >> GAME);
           layer_on(GAME_HOLD);
       } else {
           layer_off(GAME_HOLD);
