@@ -46,7 +46,7 @@
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 0
 
-#define DEBUG_MATRIX_SCAN_RATE
+//#define DEBUG_MATRIX_SCAN_RATE
 
 #define USB_POLLING_INTERVAL_MS 1
 
