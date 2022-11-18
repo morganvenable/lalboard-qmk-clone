@@ -86,7 +86,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*R1*/ KC_7,            KC_AMPR,        KC_UNDS,        KC_KP_PLUS,     KC_6,
         /*R2*/ KC_8,            KC_KP_ASTERISK, KC_COLON,       KC_TRNS,        KC_CIRCUMFLEX,
         /*R3*/ KC_9,            KC_LPRN,        KC_LGUI,         KC_TRNS,        KC_SCOLON,
-        /*R4*/ KC_0,            KC_RPRN,        XXXXXXX,        KC_TRNS,        KC_QUES,
+        /*R4*/ KC_0,            KC_RPRN,        XXXXXXX,        KC_QUES,        KC_RBRC,
 
         /*L1*/ KC_4,            KC_DOLLAR,      KC_5,             KC_MINUS,      KC_SLASH,
         /*L2*/ KC_3,            KC_HASH,        KC_GT,           KC_PERCENT,    KC_LT,
