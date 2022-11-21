@@ -27,6 +27,7 @@
 enum my_keycodes {
   KC_NORMAL_HOLD = SAFE_RANGE,
   KC_GAME_HOLD,
+  KC_GAZE,
 };
 
 enum layer {
@@ -66,10 +67,10 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 
     [NORMAL_HOLD] = LAYOUT(
              /*Center           North           East            South           West*/
-        /*R1*/ _______,         _______,        _______,        _______,        _______,
-        /*R2*/ _______,         _______,        _______,        _______,        _______,
-        /*R3*/ _______,         _______,        _______,        _______,        _______,
-        /*R4*/ _______,         _______,        _______,        _______,        _______,
+        /*R1*/ KC_LEFT,         _______,        _______,        _______,        _______,
+        /*R2*/ KC_UP,         _______,        _______,        _______,        _______,
+        /*R3*/ KC_DOWN,         _______,        _______,        _______,        _______,
+        /*R4*/ KC_RIGHT,         _______,        _______,        _______,        _______,
 
         /*L1*/ _______,         _______,        _______,        LCTL(KC_V),     _______,
         /*L2*/ _______,         _______,        _______,        LCTL(KC_C),     _______,
@@ -194,6 +195,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           layer_on(NORMAL_HOLD);
       } else {
           layer_off(NORMAL_HOLD);
+          SEND_STRING(SS_TAP(X_F11));
       }
       return false;
     case KC_GAME_HOLD:
