@@ -27,8 +27,10 @@
 enum my_keycodes {
   KC_NORMAL_HOLD = SAFE_RANGE,
   KC_GAME_HOLD,
-  KC_GAZE,
+  //KC_GAZE,
 };
+
+#define GAZE MEH(KC_F11)
 
 enum layer {
     NORMAL,
@@ -195,7 +197,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           layer_on(NORMAL_HOLD);
       } else {
           layer_off(NORMAL_HOLD);
-          SEND_STRING(SS_TAP(X_F20));
+          SEND_STRING(SS_LCTL(SS_LSFT(SS_LALT(SS_TAP(X_F11)))));
       }
       return false;
     case KC_GAME_HOLD:
