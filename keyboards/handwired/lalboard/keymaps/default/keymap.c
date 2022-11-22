@@ -195,7 +195,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           layer_on(NORMAL_HOLD);
       } else {
           layer_off(NORMAL_HOLD);
-          SEND_STRING(SS_TAP(X_F11));
+          SEND_STRING(SS_TAP(X_F20));
       }
       return false;
     case KC_GAME_HOLD:
