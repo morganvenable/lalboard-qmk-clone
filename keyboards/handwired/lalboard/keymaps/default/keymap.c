@@ -69,14 +69,14 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 
     [NORMAL_HOLD] = LAYOUT(
              /*Center           North           East            South           West*/
-        /*R1*/ KC_LEFT,         _______,        _______,        _______,        _______,
-        /*R2*/ KC_UP,         _______,        _______,        _______,        _______,
-        /*R3*/ KC_DOWN,         _______,        _______,        _______,        _______,
-        /*R4*/ KC_RIGHT,         _______,        _______,        _______,        _______,
+        /*R1*/ KC_LEFT,         KC_WH_L,        _______,        KC_MS_L,        _______,
+        /*R2*/ KC_UP,           KC_WH_U,        _______,        KC_MS_U,        _______,
+        /*R3*/ KC_DOWN,         KC_WH_D,        _______,        KC_MS_D,        _______,
+        /*R4*/ KC_RIGHT,        KC_WH_R,        _______,        KC_MS_R,        _______,
 
-        /*L1*/ _______,         _______,        _______,        LCTL(KC_V),     _______,
-        /*L2*/ _______,         _______,        _______,        LCTL(KC_C),     _______,
-        /*L3*/ _______,         _______,        _______,        LCTL(KC_X),     _______,
+        /*L1*/ KC_BTN1,         _______,        _______,        LCTL(KC_V),     _______,
+        /*L2*/ KC_BTN2,         _______,        _______,        LCTL(KC_C),     _______,
+        /*L3*/ KC_BTN3,         _______,        _______,        LCTL(KC_X),     _______,
         /*L4*/ TO(NORMAL),      _______,        _______,        TO(GAME),       _______,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
