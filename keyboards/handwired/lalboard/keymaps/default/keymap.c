@@ -70,13 +70,13 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
              /*Center           North           East            South           West*/
         /*R1*/ KC_LEFT,         LCTL(KC_UP),   LCTL(KC_RIGHT), LCTL(KC_DOWN), LCTL(KC_LEFT),
         /*R2*/ KC_UP,           KC_MS_U,        KC_MS_R,        KC_MS_D,        KC_MS_L,
-        /*R3*/ KC_DOWN,         KC_WH_U,        KC_WH_R,        KC_WH_D,        KC_WH_L,
+        /*R3*/ KC_DOWN,         KC_WH_U,        KC_WH_R,        KC_WH_D,        KC_WH_L,  
         /*R4*/ KC_RIGHT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
 
         /*L1*/ KC_BTN1,         XXXXXXX,        XXXXXXX,        LCTL(KC_V),     XXXXXXX,
         /*L2*/ KC_BTN2,         XXXXXXX,        XXXXXXX,        LCTL(KC_C),     XXXXXXX,
         /*L3*/ KC_BTN3,         XXXXXXX,        XXXXXXX,        LCTL(KC_X),     XXXXXXX,
-        /*L4*/ TO(NORMAL),      XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+        /*L4*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ _______,         _______,        _______,        _______,        _______,
