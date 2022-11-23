@@ -26,7 +26,7 @@
 
 enum my_keycodes {
   KC_NORMAL_HOLD = SAFE_RANGE,
-  KC_GAME_HOLD,
+  //KC_GAME_HOLD,
   //KC_GAZE,
 };
 
@@ -37,10 +37,10 @@ enum layer {
     NORMAL_HOLD,
     FUNC,
     NAS,
-    GAME,
-    GAME_HOLD,
-    GAME_MOD_1,
-    GAME_MOD_2,
+    // GAME,
+    // GAME_HOLD,
+    // GAME_MOD_1,
+    // GAME_MOD_2,
     NUM_LAYERS
 };
 
@@ -72,12 +72,12 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*R1*/ KC_LEFT,         LCTL(KC_UP),   LCTL(KC_RIGHT), LCTL(KC_DOWN), LCTL(KC_LEFT),
         /*R2*/ KC_UP,           KC_MS_U,        KC_MS_R,        KC_MS_D,        KC_MS_L,
         /*R3*/ KC_DOWN,         KC_WH_U,        KC_WH_R,        KC_WH_D,        KC_WH_L,
-        /*R4*/ KC_RIGHT,        _______,        _______,       _______,        _______,
+        /*R4*/ KC_RIGHT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
 
-        /*L1*/ KC_BTN1,         _______,        _______,        LCTL(KC_V),     _______,
-        /*L2*/ KC_BTN2,         _______,        _______,        LCTL(KC_C),     _______,
-        /*L3*/ KC_BTN3,         _______,        _______,        LCTL(KC_X),     _______,
-        /*L4*/ TO(NORMAL),      _______,        _______,        TO(GAME),       _______,
+        /*L1*/ KC_BTN1,         XXXXXXX,        XXXXXXX,        LCTL(KC_V),     XXXXXXX,
+        /*L2*/ KC_BTN2,         XXXXXXX,        XXXXXXX,        LCTL(KC_C),     XXXXXXX,
+        /*L3*/ KC_BTN3,         XXXXXXX,        XXXXXXX,        LCTL(KC_X),     XXXXXXX,
+        /*L4*/ TO(NORMAL),      XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ _______,         _______,        _______,        _______,        _______,
@@ -118,73 +118,73 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
     ),
 
-    [GAME] = LAYOUT(
-             /*Center           North           East            South           West*/
-        /*R1*/ KC_J,            KC_U,           KC_QUOTE,       KC_M,           KC_H,
-        /*R2*/ KC_K,            KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
-        /*R3*/ KC_L,            KC_O,           KC_LGUI,         KC_DOT,      KC_N,
-        /*R4*/ KC_SCOLON,         KC_P,           KC_BSLASH,      KC_SLASH,       KC_RBRC,
+    // [GAME] = LAYOUT(
+    //          /*Center           North           East            South           West*/
+    //     /*R1*/ KC_J,            KC_U,           KC_QUOTE,       KC_M,           KC_H,
+    //     /*R2*/ KC_K,            KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
+    //     /*R3*/ KC_L,            KC_O,           KC_LGUI,         KC_DOT,      KC_N,
+    //     /*R4*/ KC_SCOLON,         KC_P,           KC_BSLASH,      KC_SLASH,       KC_RBRC,
 
-        /*L1*/ KC_F,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
-        /*L2*/ KC_D,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
-        /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
-        /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
+    //     /*L1*/ KC_F,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
+    //     /*L2*/ KC_D,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
+    //     /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
+    //     /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
-             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_SPACE,       KC_GAME_HOLD,   MO(GAME_MOD_1), KC_LCTRL
-    ),
+    //          /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+    //     /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
+    //     /*LT*/ KC_LSHIFT,       KC_SPACE,       KC_GAME_HOLD,   MO(GAME_MOD_1), KC_LCTRL
+    // ),
 
-    [GAME_HOLD] = LAYOUT(
-             /*Center           North           East            South           West*/
-        /*R1*/ _______,         _______,        _______,        _______,        _______,
-        /*R2*/ _______,         _______,        _______,        _______,        _______,
-        /*R3*/ _______,         _______,        _______,        _______,        _______,
-        /*R4*/ _______,         _______,        _______,        _______,        _______,
+    // [GAME_HOLD] = LAYOUT(
+    //          /*Center           North           East            South           West*/
+    //     /*R1*/ _______,         _______,        _______,        _______,        _______,
+    //     /*R2*/ _______,         _______,        _______,        _______,        _______,
+    //     /*R3*/ _______,         _______,        _______,        _______,        _______,
+    //     /*R4*/ _______,         _______,        _______,        _______,        _______,
 
-        /*L1*/ _______,         _______,        _______,        LCTL(KC_V),     _______,
-        /*L2*/ _______,         _______,        _______,        LCTL(KC_C),     _______,
-        /*L3*/ _______,         _______,        _______,        LCTL(KC_X),     _______,
-        /*L4*/ TO(NORMAL),      _______,        _______,        TO(GAME),       _______,
+    //     /*L1*/ _______,         _______,        _______,        LCTL(KC_V),     _______,
+    //     /*L2*/ _______,         _______,        _______,        LCTL(KC_C),     _______,
+    //     /*L3*/ _______,         _______,        _______,        LCTL(KC_X),     _______,
+    //     /*L4*/ TO(NORMAL),      _______,        _______,        TO(GAME),       _______,
 
-             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ _______,         _______,        _______,        _______,        _______,
-        /*LT*/ _______,         _______,        _______,        _______,        _______
-    ),
+    //          /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+    //     /*RT*/ _______,         _______,        _______,        _______,        _______,
+    //     /*LT*/ _______,         _______,        _______,        _______,        _______
+    // ),
 
-    [GAME_MOD_1] = LAYOUT(
-             /*Center           North           East            South           West*/
-        /*R1*/ KC_J,            KC_U,           KC_QUOTE,       KC_M,           KC_H,
-        /*R2*/ KC_K,            KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
-        /*R3*/ KC_L,            KC_O,           KC_RGUI,         KC_DOT,      KC_N,
-        /*R4*/ KC_SCOLON,         KC_P,           KC_BSLASH,      KC_SLASH,       KC_RBRC,
+    // [GAME_MOD_1] = LAYOUT(
+    //          /*Center           North           East            South           West*/
+    //     /*R1*/ KC_J,            KC_U,           KC_QUOTE,       KC_M,           KC_H,
+    //     /*R2*/ KC_K,            KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
+    //     /*R3*/ KC_L,            KC_O,           KC_RGUI,         KC_DOT,      KC_N,
+    //     /*R4*/ KC_SCOLON,         KC_P,           KC_BSLASH,      KC_SLASH,       KC_RBRC,
 
-        /*L1*/ KC_F,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
-        /*L2*/ KC_D,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
-        /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
-        /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
+    //     /*L1*/ KC_F,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
+    //     /*L2*/ KC_D,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
+    //     /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
+    //     /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
-             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_GAME_HOLD,   MO(GAME_MOD_1), KC_LCTRL
-    ),
+    //          /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+    //     /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
+    //     /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_GAME_HOLD,   MO(GAME_MOD_1), KC_LCTRL
+    // ),
 
-    [GAME_MOD_2] = LAYOUT(
-             /*Center           North           East            South           West*/
-        /*R1*/ KC_J,            KC_U,           KC_QUOTE,       KC_M,           KC_H,
-        /*R2*/ KC_K,            KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
-        /*R3*/ KC_L,            KC_O,           KC_LGUI,         KC_DOT,      KC_N,
-        /*R4*/ KC_SCOLON,         KC_P,           KC_BSLASH,      KC_SLASH,       KC_RBRC,
+    // [GAME_MOD_2] = LAYOUT(
+    //          /*Center           North           East            South           West*/
+    //     /*R1*/ KC_J,            KC_U,           KC_QUOTE,       KC_M,           KC_H,
+    //     /*R2*/ KC_K,            KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
+    //     /*R3*/ KC_L,            KC_O,           KC_LGUI,         KC_DOT,      KC_N,
+    //     /*R4*/ KC_SCOLON,         KC_P,           KC_BSLASH,      KC_SLASH,       KC_RBRC,
 
-        /*L1*/ KC_F,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
-        /*L2*/ KC_D,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
-        /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
-        /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
+    //     /*L1*/ KC_F,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
+    //     /*L2*/ KC_D,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
+    //     /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
+    //     /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
-             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_GAME_HOLD,   MO(GAME_MOD_1), KC_LCTRL
-    ),
+    //          /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+    //     /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
+    //     /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_GAME_HOLD,   MO(GAME_MOD_1), KC_LCTRL
+    // ),
 };
 
 
@@ -198,18 +198,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           SEND_STRING(SS_LCTL(SS_LSFT(SS_LALT(SS_TAP(X_F11)))));
       } else {
           layer_off(NORMAL_HOLD);
-          
+
       }
       return false;
-    case KC_GAME_HOLD:
-      if (record->event.pressed) {
-          layer_clear();
-          default_layer_set(1 >> GAME);
-          layer_on(GAME_HOLD);
-      } else {
-          layer_off(GAME_HOLD);
-      }
-      return false;
+    // case KC_GAME_HOLD:
+    //   if (record->event.pressed) {
+    //       layer_clear();
+    //       default_layer_set(1 >> GAME);
+    //       layer_on(GAME_HOLD);
+    //   } else {
+    //       layer_off(GAME_HOLD);
+    //   }
+    //   return false;
     default:
       return true;
   }
