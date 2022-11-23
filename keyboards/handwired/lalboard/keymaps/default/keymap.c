@@ -69,10 +69,10 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 
     [NORMAL_HOLD] = LAYOUT(
              /*Center           North           East            South           West*/
-        /*R1*/ KC_LEFT,         LCTRL(KC_UP),   LCTRL(KC_RIGHT),LCTRL(KC_DOWN), LCTRL(KC_LEFT),
+        /*R1*/ KC_LEFT,         LCTL(KC_UP),   LCTL(KC_RIGHT), LCTL(KC_DOWN), LCTL(KC_LEFT),
         /*R2*/ KC_UP,           KC_MS_U,        KC_MS_R,        KC_MS_D,        KC_MS_L,
         /*R3*/ KC_DOWN,         KC_WH_U,        KC_WH_R,        KC_WH_D,        KC_WH_L,
-        /*R4*/ KC_RIGHT,        __,        _______,       _________,        _______,
+        /*R4*/ KC_RIGHT,        _______,        _______,       _______,        _______,
 
         /*L1*/ KC_BTN1,         _______,        _______,        LCTL(KC_V),     _______,
         /*L2*/ KC_BTN2,         _______,        _______,        LCTL(KC_C),     _______,
@@ -195,9 +195,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           layer_clear();
           default_layer_set(1 >> NORMAL);
           layer_on(NORMAL_HOLD);
+          SEND_STRING(SS_LCTL(SS_LSFT(SS_LALT(SS_TAP(X_F11)))));
       } else {
           layer_off(NORMAL_HOLD);
-          SEND_STRING(SS_LCTL(SS_LSFT(SS_LALT(SS_TAP(X_F11)))));
+          
       }
       return false;
     case KC_GAME_HOLD:
