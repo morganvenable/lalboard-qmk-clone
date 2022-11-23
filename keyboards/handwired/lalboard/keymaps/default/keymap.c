@@ -69,10 +69,10 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 
     [NORMAL_HOLD] = LAYOUT(
              /*Center           North           East            South           West*/
-        /*R1*/ KC_LEFT,         KC_WH_L,        _______,        KC_MS_L,        _______,
-        /*R2*/ KC_UP,           KC_WH_U,        _______,        KC_MS_U,        _______,
-        /*R3*/ KC_DOWN,         KC_WH_D,        _______,        KC_MS_D,        _______,
-        /*R4*/ KC_RIGHT,        KC_WH_R,        _______,        KC_MS_R,        _______,
+        /*R1*/ KC_LEFT,         LCTRL(KC_UP),   LCTRL(KC_RIGHT),LCTRL(KC_DOWN), LCTRL(KC_LEFT),
+        /*R2*/ KC_UP,           KC_MS_U,        KC_MS_R,        KC_MS_D,        KC_MS_L,
+        /*R3*/ KC_DOWN,         KC_WH_U,        KC_WH_R,        KC_WH_D,        KC_WH_L,
+        /*R4*/ KC_RIGHT,        __,        _______,       _________,        _______,
 
         /*L1*/ KC_BTN1,         _______,        _______,        LCTL(KC_V),     _______,
         /*L2*/ KC_BTN2,         _______,        _______,        LCTL(KC_C),     _______,
