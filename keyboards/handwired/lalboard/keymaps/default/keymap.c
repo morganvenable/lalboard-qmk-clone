@@ -194,7 +194,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           layer_clear();
           default_layer_set(1 >> NORMAL);
           layer_on(NORMAL_HOLD);
-          SEND_STRING(SS_LCTL(SS_LSFT(SS_LALT(SS_TAP(X_F19)))));
+          SEND_STRING(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_F19)))));
       } else {
           layer_off(NORMAL_HOLD);
 
