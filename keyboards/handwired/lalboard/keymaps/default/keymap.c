@@ -223,6 +223,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case KC_NORMAL_HOLD:
+    //
       if (record->event.pressed) {
           layer_clear();
           default_layer_set(1 >> NORMAL);
