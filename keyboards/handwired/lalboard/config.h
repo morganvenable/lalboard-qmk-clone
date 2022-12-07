@@ -44,10 +44,10 @@
 #define MATRIX_COL_PUSHED_STATES { 0, 0, 1, 0, 0 }
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 0
+#define DEBOUNCE 15
 
 //#define DEBUG_MATRIX_SCAN_RATE
 
-#define USB_POLLING_INTERVAL_MS 1
+#define USB_POLLING_INTERVAL_MS 3
 
 #define QMK_KEYS_PER_SCAN 12
