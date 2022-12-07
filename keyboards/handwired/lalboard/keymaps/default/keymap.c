@@ -26,7 +26,7 @@
 
 enum my_keycodes {
   KC_NORMAL_HOLD = SAFE_RANGE,
-  KC_COLEMAK_HOLD
+  KC_COLEMAK_HOLD,
   //
   //KC_GAME_HOLD,
   //KC_GAZE,
@@ -37,8 +37,8 @@ enum layer {
     NORMAL_HOLD,
     FUNC,
     NAS,
-    COLEMAK_ASRT
-    COLEMAK_HOLD
+    COLEMAK_ASRT,
+    COLEMAK_HOLD,
     // GAME,
     // GAME_HOLD,
     // GAME_MOD_1,

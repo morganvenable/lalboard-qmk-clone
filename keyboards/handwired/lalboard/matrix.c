@@ -152,7 +152,7 @@ uint8_t matrix_scan(void) {
     for (int local_row = 0; local_row < LOCAL_MATRIX_ROWS; local_row++) {
         pin_t row_pin = row_pins[local_row];
         writePin(row_pin, 1);
-        wait_us(15);
+        wait_us(40);
 
         uint8_t global_row = first_local_row + local_row;
 
@@ -161,7 +161,7 @@ uint8_t matrix_scan(void) {
         current_matrix[global_row] = new_row;
         writePin(row_pin, 0);
 
-        wait_us(100);
+        wait_us(40);
     }
 
     if (is_keyboard_master()) {
@@ -178,6 +178,6 @@ void matrix_power_down(void) {
     for (int row = 0; row < LOCAL_MATRIX_ROWS; row++) {
         int row_pin = row_pins[row];
         writePin(row_pin, 0);
-        wait_us(15);
+        wait_us(40);
     }
 }
