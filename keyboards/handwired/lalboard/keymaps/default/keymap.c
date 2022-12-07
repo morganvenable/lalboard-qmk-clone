@@ -37,6 +37,7 @@ enum layer {
     NORMAL_HOLD,
     FUNC,
     NAS,
+    COLEMAK,
     COLEMAK_ASRT,
     COLEMAK_HOLD,
     // GAME,
@@ -136,13 +137,13 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
         /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_COLEMAK_HOLD, KC_TAB,         KC_LCTRL
     ),
-    
+
     [COLEMAK_ASRT] = LAYOUT(
              /*Center           North           East            South           West*/
         /*R1*/ KC_N,            KC_L,           KC_QUOTE,       KC_M,           KC_H,
         /*R2*/ KC_E,            KC_U,           KC_COLON,       KC_COMMA,       KC_K,
         /*R3*/ KC_I,            KC_Y,           KC_LGUI,         KC_DOT,        KC_J,
-        /*R4*/ KC_O,            KC_SEMI,        KC_BSLASH,      KC_SLASH,       KC_RBRC,
+        /*R4*/ KC_O,            KC_SCOLON,        KC_BSLASH,      KC_SLASH,       KC_RBRC,
 
         /*L1*/ KC_T,            KC_P,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
         /*L2*/ KC_R,            KC_F,           KC_D,           KC_C,           KC_GRAVE,
