@@ -27,6 +27,7 @@
 enum my_keycodes {
   KC_NORMAL_HOLD = SAFE_RANGE,
   KC_GAME_HOLD,
+  KC_GAZE,
 };
 
 enum layer {
@@ -192,6 +193,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           layer_clear();
           default_layer_set(1 >> NORMAL);
           layer_on(NORMAL_HOLD);
+          SEND_STRING(SS_TAP(X_F13));
       } else {
           layer_off(NORMAL_HOLD);
       }
