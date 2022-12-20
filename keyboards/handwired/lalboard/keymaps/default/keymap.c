@@ -26,6 +26,7 @@
 
 enum my_keycodes {
   KC_NORMAL_HOLD = SAFE_RANGE,
+  KC_COLEMAK_HOLD,
   //
   //KC_GAME_HOLD,
   //KC_GAZE,
@@ -36,6 +37,9 @@ enum layer {
     NORMAL_HOLD,
     FUNC,
     NAS,
+    COLEMAK,
+    COLEMAK_ASRT,
+    COLEMAK_HOLD,
     // GAME,
     // GAME_HOLD,
     // GAME_MOD_1,
@@ -122,7 +126,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*R1*/ KC_N,            KC_L,           KC_QUOTE,       KC_M,           KC_H,
         /*R2*/ KC_E,            KC_U,           KC_COLON,       KC_COMMA,       KC_K,
         /*R3*/ KC_I,            KC_Y,           KC_LGUI,         KC_DOT,        KC_J,
-        /*R4*/ KC_O,            KC_SEMI,        KC_BSLASH,      KC_SLASH,       KC_RBRC,
+        /*R4*/ KC_O,            KC_SCOLON,        KC_BSLASH,      KC_SLASH,       KC_RBRC,
 
         /*L1*/ KC_T,            KC_P,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
         /*L2*/ KC_S,            KC_F,           KC_D,           KC_C,           KC_GRAVE,
@@ -133,13 +137,13 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
         /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_COLEMAK_HOLD, KC_TAB,         KC_LCTRL
     ),
-    
+
     [COLEMAK_ASRT] = LAYOUT(
              /*Center           North           East            South           West*/
         /*R1*/ KC_N,            KC_L,           KC_QUOTE,       KC_M,           KC_H,
         /*R2*/ KC_E,            KC_U,           KC_COLON,       KC_COMMA,       KC_K,
         /*R3*/ KC_I,            KC_Y,           KC_LGUI,         KC_DOT,        KC_J,
-        /*R4*/ KC_O,            KC_SEMI,        KC_BSLASH,      KC_SLASH,       KC_RBRC,
+        /*R4*/ KC_O,            KC_SCOLON,        KC_BSLASH,      KC_SLASH,       KC_RBRC,
 
         /*L1*/ KC_T,            KC_P,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
         /*L2*/ KC_R,            KC_F,           KC_D,           KC_C,           KC_GRAVE,
@@ -223,6 +227,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case KC_NORMAL_HOLD:
+    //
       if (record->event.pressed) {
           layer_clear();
           default_layer_set(1 >> NORMAL);
