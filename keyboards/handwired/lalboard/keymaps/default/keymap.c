@@ -185,7 +185,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ _______,         _______,        _______,        _______,        _______,
-        /*LT*/ _______,         _______,        _______,        _______,        _______
+        /*LT*/ _______,         _______,        KC_COLEMAK_HOLD,        _______,        _______
     ),
 
     // [GAME_MOD_1] = LAYOUT(
