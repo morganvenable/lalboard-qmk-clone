@@ -80,7 +80,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L1*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_V),     XXXXXXX,
         /*L2*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_C),     XXXXXXX,
         /*L3*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_X),     XXXXXXX,
-        /*L4*/ TO(NORMAL),      _______,        _______,        TO(COLEMAK_ASRT),       _______,
+        /*L4*/ DF(NORMAL),      _______,        _______,        DF(COLEMAK_ASRT),       _______,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ _______,         _______,        _______,        _______,        _______,
@@ -152,7 +152,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 
         /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_COLEMAK_HOLD, KC_TAB,         KC_LCTRL
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
     ),
     // [GAME] = LAYOUT(
     //          /*Center           North           East            South           West*/
@@ -238,15 +238,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
       }
       return false;
-    case KC_COLEMAK_HOLD:
-      if (record->event.pressed) {
-          layer_clear();
-          default_layer_set(1 >> COLEMAK_ASRT);
-          layer_on(COLEMAK_HOLD);
-      } else {
-          layer_off(COLEMAK_HOLD);
-      }
-      return false;
+    // case KC_COLEMAK_HOLD:
+    //   if (record->event.pressed) {
+    //       layer_clear();
+    //       default_layer_set(1 >> COLEMAK_ASRT);
+    //       layer_on(COLEMAK_HOLD);
+    //   } else {
+    //       layer_off(COLEMAK_HOLD);
+    //   }
+    //   return false;
     default:
       return true;
   }
