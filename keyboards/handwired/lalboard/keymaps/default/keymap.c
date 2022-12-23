@@ -68,7 +68,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 
         /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       MO(NORMAL_HOLD), KC_TAB,         KC_LCTRL
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
     ),
 
     [COLEMAK_ASRT] = LAYOUT(
@@ -85,7 +85,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 
         /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       MO(NORMAL_HOLD), KC_TAB,         KC_LCTRL
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
     ),
 
     [NORMAL_HOLD] = LAYOUT(
@@ -230,15 +230,15 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
 
-    // case KC_COLEMAK_HOLD:
-    //   if (record->event.pressed) {
-    //       layer_clear();
-    //       //default_layer_set(1 >> COLEMAK_ASRT);
-    //       layer_on(COLEMAK_HOLD);
-    //   } else {
-    //       layer_off(COLEMAK_HOLD);
-    //   }
-    //   return false;
+     case KC_NORMAL_HOLD:
+      if (record->event.pressed) {
+          layer_clear();
+          layer_on(NORMAL_HOLD);
+          SEND_STRING(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_F19)))));
+      } else {
+          layer_off(NORMAL_HOLD);
+      }
+      return false;
     default:
       return true;
   }
