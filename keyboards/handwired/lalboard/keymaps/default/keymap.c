@@ -141,6 +141,24 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
     ),
 
+    [FUNC_HOLD] = LAYOUT(
+             /*Center           North           East            South           West*/
+        /*R1*/ KC_LEFT,         LCTL(KC_UP),   LCTL(KC_RIGHT), LCTL(KC_DOWN), LCTL(KC_LEFT),
+        /*R2*/ KC_UP,           KC_MS_U,        KC_MS_R,        KC_MS_D,        KC_MS_L,
+        /*R3*/ KC_DOWN,         KC_WH_U,        KC_WH_R,        KC_WH_D,        KC_WH_L,
+        /*R4*/ KC_RIGHT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
+
+        /*L1*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_V),     XXXXXXX,
+        /*L2*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_C),     XXXXXXX,
+        /*L3*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_X),     XXXXXXX,
+        /*L4*/ DF(NORMAL),      _______,        _______,        DF(COLEMAK_ASRT),       _______,
+
+             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+        /*RT*/ _______,         _______,        _______,        _______,        _______,
+        /*LT*/ _______,         _______,        _______,        _______,        _______
+    ),
+
+
     // [COLEMAK] = LAYOUT(
     //          /*Center           North           East            South           West*/
     //     /*R1*/ KC_N,            KC_L,           KC_QUOTE,       KC_M,           KC_H,
@@ -239,6 +257,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           SEND_STRING(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_F19)))));
       } else {
           layer_off(NORMAL_HOLD);
+      }
+      return false;
+     case KC_FUNC_HOLD:
+      if (record->event.pressed) {
+          layer_clear();
+          layer_on(FUNC_HOLD);
+          //SEND_STRING(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_F19)))));
+      } else {
+          layer_off(FUNC_HOLD);
       }
       return false;
     default:
