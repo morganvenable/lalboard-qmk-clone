@@ -27,6 +27,7 @@
 enum my_keycodes {
   KC_NORMAL_HOLD = SAFE_RANGE,
   KC_COLEMAK_HOLD,
+  KC_FUNC_HOLD
   //
   //KC_GAME_HOLD,
   //KC_GAZE,
@@ -37,6 +38,7 @@ enum layer {
     COLEMAK_ASRT,
     NORMAL_HOLD,
     FUNC,
+    FUNC_HOLD,
     NAS,
     //COLEMAK,
 
@@ -101,21 +103,21 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L4*/ DF(NORMAL),      _______,        _______,        DF(COLEMAK_ASRT),       _______,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ _______,         _______,        _______,        _______,        _______,
+        /*RT*/ _______,         _______,        RGUI(KC_H),        _______,        _______,
         /*LT*/ _______,         _______,        _______,        _______,        _______
     ),
 
     [NAS] = LAYOUT(
              /*Center           North           East            South           West*/
         /*R1*/ KC_7,            KC_AMPR,        KC_UNDS,        KC_KP_PLUS,     KC_6,
-        /*R2*/ KC_8,            KC_KP_ASTERISK, KC_COLON,       KC_TRNS,        KC_CIRCUMFLEX,
-        /*R3*/ KC_9,            KC_LPRN,        KC_LGUI,         KC_TRNS,        KC_SCOLON,
+        /*R2*/ KC_8,            KC_KP_ASTERISK, KC_COLON,       KC_COMMA,       KC_CIRCUMFLEX,
+        /*R3*/ KC_9,            KC_LPRN,        KC_LGUI,        KC_DOT,         KC_SCOLON,
         /*R4*/ KC_0,            KC_RPRN,        XXXXXXX,        KC_QUES,        KC_RBRC,
 
-        /*L1*/ KC_4,            KC_DOLLAR,      KC_5,             KC_MINUS,      KC_SLASH,
-        /*L2*/ KC_3,            KC_HASH,        KC_GT,           KC_PERCENT,    KC_LT,
-        /*L3*/ KC_2,            KC_AT,          XXXXXXX,         KC_X,          KC_ESC,
-        /*L4*/ KC_1,            KC_EXCLAIM,     KC_TILDE,        KC_EQUAL,      KC_DEL,
+        /*L1*/ KC_4,            KC_DOLLAR,      KC_5,           KC_MINUS,       KC_SLASH,
+        /*L2*/ KC_3,            KC_HASH,        KC_GT,          KC_PERCENT,     KC_LT,
+        /*L3*/ KC_2,            KC_AT,          XXXXXXX,        KC_X,           KC_ESC,
+        /*L4*/ KC_1,            KC_EXCLAIM,     KC_TILDE,       KC_EQUAL,       KC_DEL,
 
         /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
