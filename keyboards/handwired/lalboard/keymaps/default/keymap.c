@@ -150,7 +150,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L1*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_V),     XXXXXXX,
         /*L2*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_C),     XXXXXXX,
         /*L3*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_X),     XXXXXXX,
-        /*L4*/ DF(NORMAL),      _______,        _______,        DF(COLEMAK_ASRT),       _______,
+        /*L4*/ _______,      _______,        _______,        _______,       _______,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ _______,         _______,        _______,        _______,        _______,
