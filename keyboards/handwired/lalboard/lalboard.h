@@ -22,7 +22,7 @@
 #pragma once
 
 #include "quantum.h"
-// #define LAYOUT( \
+/* #define LAYOUT(
 //     r1d, r1n, r1e, r1s, r1w, \
 //     r2d, r2n, r2e, r2s, r2w, \
 //     r3d, r3n, r3e, r3s, r3w, \
@@ -45,6 +45,7 @@
 //     {l4e, l4n, l4d, l4s, l4w}, \
 //     {ltlo,ltuo,ltd, lti, ltu} \
 // }
+*/
 
 //Layout for svalboard v0
 //1 2 3 4 5
