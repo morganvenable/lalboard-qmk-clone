@@ -41,7 +41,8 @@
 
 // The column with the "down" keys on both the normal and thumb clusters
 // is inverted.
-#define MATRIX_COL_PUSHED_STATES { 0, 0, 1, 0, 0 }
+#define MATRIX_COL_PUSHED_STATES { 0, 0, 0, 0, 0 }
+#define MATRIX_COL_PUSHED_STATES_THUMBS { 0, 0, 1, 0, 0 }
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 15
