@@ -39,6 +39,7 @@ static matrix_row_t current_matrix[MATRIX_ROWS];
 static const pin_t row_pins[LOCAL_MATRIX_ROWS] = MATRIX_ROW_PINS;
 static const pin_t col_pins[MATRIX_COLS] = MATRIX_COL_PINS;
 static const uint8_t col_pushed_states[MATRIX_COLS] = MATRIX_COL_PUSHED_STATES;
+static const uint8_t col_pushed_states_thumbs[MATRIX_COLS] = MATRIX_COL_PUSHED_STATES_THUMBS;
 
 matrix_row_t matrix_get_row(uint8_t row) {
     return current_matrix[row];
@@ -96,14 +97,20 @@ __attribute__((weak)) void matrix_scan_kb(void) { matrix_scan_user(); }
 __attribute__((weak)) void matrix_scan_user(void) {}
 
 
-matrix_row_t read_row(void) {
+matrix_row_t read_row(bool thumbs) {
     matrix_row_t row = 0;
 
     for (int col = 0; col < MATRIX_COLS; col++) {
         int col_pin = col_pins[col];
-
-        if (readPin(col_pin) == col_pushed_states[col]) {
-            row |= 1 << col;
+        if (thumbs == true){
+            if (readPin(col_pin) == col_pushed_states_thumbs[col]) {
+                row |= 1 << col;
+            }
+        }
+        else {
+            if (readPin(col_pin) == col_pushed_states[col]) {
+                row |= 1 << col;
+            }
         }
     }
 
@@ -146,6 +153,7 @@ void send_local_matrix(void) {
 
 uint8_t matrix_scan(void) {
     bool changed = false;
+    bool use_thumb_mask = false;
 
     int first_local_row = get_first_local_row();
 
@@ -155,8 +163,10 @@ uint8_t matrix_scan(void) {
         wait_us(40);
 
         uint8_t global_row = first_local_row + local_row;
-
-        matrix_row_t new_row = read_row();
+        
+        use_thumb_mask = (local_row == 0);                          // only use the Thumbs mask for row 0 local -- this is also row 5 of 10 remote
+        matrix_row_t new_row = read_row(use_thumb_mask);    //
+        
         changed |= new_row != current_matrix[global_row];
         current_matrix[global_row] = new_row;
         writePin(row_pin, 0);
