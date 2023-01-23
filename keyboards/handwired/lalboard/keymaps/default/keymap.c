@@ -68,8 +68,8 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
         /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
+        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,  KC_TILDE,
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL, KC_CAPS
     ),
 
     [COLEMAK_ASRT] = LAYOUT(
@@ -85,8 +85,8 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
         /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
+        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT, _______
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL, _______
     ),
 
     [NORMAL_HOLD] = LAYOUT(
@@ -102,8 +102,8 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L4*/ DF(NORMAL),      _______,        _______,        DF(COLEMAK_ASRT),       _______,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ _______,         _______,        _______,        _______,        _______,
-        /*LT*/ _______,         _______,        _______,        _______,        _______
+        /*RT*/ _______,         _______,        _______,        _______,        _______, _______,
+        /*LT*/ _______,         _______,        _______,        _______,        _______, _______
     ),
 
     [NAS] = LAYOUT(
@@ -119,8 +119,8 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L4*/ KC_1,            KC_EXCLAIM,     KC_TILDE,       KC_EQUAL,       KC_DEL,
 
         /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
+        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT, _______,
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL, _______
     ),
 
     [FUNC] = LAYOUT(
@@ -136,8 +136,8 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L4*/ XXXXXXX,         KC_F2,          XXXXXXX,        KC_F1,          KC_DEL,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
+        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT, _______,
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL,_______
     ),
 
     [FUNC_HOLD] = LAYOUT(
@@ -153,8 +153,8 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L4*/ _______,      _______,        _______,        _______,       _______,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ _______,         _______,        _______,        _______,        _______,
-        /*LT*/ _______,         _______,        _______,        _______,        _______
+        /*RT*/ _______,         _______,        _______,        _______,        _______,_______,
+        /*LT*/ _______,         _______,        _______,        _______,        _______, _______
     ),
    
 };
