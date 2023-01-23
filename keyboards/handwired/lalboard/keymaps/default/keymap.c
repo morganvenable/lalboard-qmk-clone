@@ -65,9 +65,9 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
         /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
-        /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
+        /*Down                  Inner           Upper           Outer Upper     Outer Lower    Double Down*/    
+        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,       KC_TILDE,
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL,      KC_CAPS
     ),
 
     [NORMAL_HOLD] = LAYOUT(
@@ -82,9 +82,9 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L3*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_X),     XXXXXXX,
         /*L4*/ TO(NORMAL),      _______,        _______,        TO(COLEMAK_ASRT),       _______,
 
-             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ _______,         _______,        _______,        _______,        _______,
-        /*LT*/ _______,         _______,        _______,        _______,        _______
+             /*Down             Inner           Upper           Outer Upper     Outer Lower    Double Down*/
+        /*RT*/ _______,         _______,        _______,        _______,        _______,      KC_TILDE
+        /*LT*/ _______,         _______,        _______,        _______,        _______,      KC_CAPS
     ),
 
 [NAS] = LAYOUT(
@@ -99,9 +99,9 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L3*/ KC_2,            KC_AT,          XXXXXXX,         KC_X,          KC_ESC,
         /*L4*/ KC_1,            KC_EXCLAIM,     KC_TILDE,        KC_EQUAL,      KC_DEL,
 
-        /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
+        /*Down                  Inner           Upper           Outer Upper     Outer Lower    Double Down*/
+        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,       KC_TILDE,
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL,      KC_CAPS
     ),
 
     [FUNC] = LAYOUT(
@@ -116,9 +116,9 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L3*/ XXXXXXX,         KC_F4,          XXXXXXX,        KC_F3,          KC_ESC,
         /*L4*/ XXXXXXX,         KC_F2,          XXXXXXX,        KC_F1,          KC_DEL,
 
-             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL
+             /*Down             Inner           Upper           Outer Upper     Outer Lower    Double Down*/
+        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,       KC_TILDE,
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL,      KC_CAPS
     ),
 
     [COLEMAK] = LAYOUT(
@@ -133,9 +133,9 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L3*/ KC_R,            KC_W,           KC_B,           KC_X,           KC_ESC,
         /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
-        /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_COLEMAK_HOLD, KC_TAB,         KC_LCTRL
+        /*Down                  Inner           Upper           Outer Upper     Outer Lower    Double Down*/
+        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,       KC_TILDE,
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_COLEMAK_HOLD, KC_TAB,         KC_LCTRL,      KC_CAPS
     ),
 
     [COLEMAK_ASRT] = LAYOUT(
@@ -150,9 +150,9 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
         /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
-        /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
-        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_COLEMAK_HOLD, KC_TAB,         KC_LCTRL
+        /*Down                  Inner           Upper           Outer Upper     Outer Lower    Double Down*/
+        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,       KC_TILDE,
+        /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_COLEMAK_HOLD, KC_TAB,         KC_LCTRL,      KC_CAPS
     ),
     // [GAME] = LAYOUT(
     //          /*Center           North           East            South           West*/
@@ -166,7 +166,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
     //     /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
     //     /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
-    //          /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+    //          /*Down             Inner           Upper           Outer Upper     Outer Lower    Double Down*/
     //     /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
     //     /*LT*/ KC_LSHIFT,       KC_SPACE,       KC_GAME_HOLD,   MO(GAME_MOD_1), KC_LCTRL
     // ),
@@ -183,9 +183,9 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L3*/ _______,         _______,        _______,        LCTL(KC_X),     _______,
         /*L4*/ TO(NORMAL),      _______,        _______,        TO(COLEMAK_ASRT),       _______,
 
-             /*Down             Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ _______,         _______,        _______,        _______,        _______,
-        /*LT*/ _______,         _______,        KC_COLEMAK_HOLD,        _______,        _______
+             /*Down             Inner           Upper           Outer Upper     Outer Lower    Double Down*/
+        /*RT*/ _______,         _______,        _______,        _______,        _______,       KC_TILDE,
+        /*LT*/ _______,         _______,        KC_COLEMAK_HOLD,  _______,      _______,       KC_CAPS
     ),
 
     // [GAME_MOD_1] = LAYOUT(
@@ -200,7 +200,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
     //     /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
     //     /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
-    //          /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+    //          /*Down             Inner           Upper           Outer Upper     Outer Lower    Double Down*/
     //     /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
     //     /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_GAME_HOLD,   MO(GAME_MOD_1), KC_LCTRL
     // ),
@@ -217,7 +217,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
     //     /*L3*/ KC_S,            KC_W,           KC_B,           KC_X,           KC_ESC,
     //     /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
-    //          /*Down             Inner           Upper           Outer Upper     Outer Lower*/
+    //          /*Down             Inner           Upper           Outer Upper     Outer Lower    Double Down*/
     //     /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,
     //     /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_GAME_HOLD,   MO(GAME_MOD_1), KC_LCTRL
     // ),
