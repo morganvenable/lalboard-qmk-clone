@@ -99,7 +99,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L1*/ RGUI(KC_H),         XXXXXXX,        XXXXXXX,        LCTL(KC_V),     XXXXXXX,
         /*L2*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_C),     XXXXXXX,
         /*L3*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_X),     XXXXXXX,
-        /*L4*/ DF(NORMAL),      _______,        _______,        DF(COLEMAK_ASRT),       _______,
+        /*L4*/ DF(NORMAL),      _______,        _______,        XXXXXXX/*DF(COLEMAK_ASRT)*/,       _______,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
         /*RT*/ _______,         _______,        _______,        _______,        _______, _______,
@@ -167,7 +167,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
           layer_clear();
           layer_on(NORMAL_HOLD);
-          SEND_STRING(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_F19)))));
+          //SEND_STRING(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_F19)))));
       } else {
           layer_off(NORMAL_HOLD);
       }
