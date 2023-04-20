@@ -34,7 +34,7 @@
 #define MATRIX_ROWS 10
 /* key matrix size (for 1 side) */
 #define LOCAL_MATRIX_ROWS (MATRIX_ROWS / 2)
-#define MATRIX_COLS 5
+#define MATRIX_COLS 6
 
 #define MATRIX_ROW_PINS { 10, 9, 8, 7, 6 }
 #define MATRIX_COL_PINS { 1, 2, 3, 4, 5, 11}

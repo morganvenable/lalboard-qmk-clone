@@ -37,7 +37,7 @@
     l2d, l2n, l2e, l2s, l2w, \
     l3d, l3n, l3e, l3s, l3w, \
     l4d, l4n, l4e, l4s, l4w, \
-    rtd, rti, rtu, rtuo, rtlo, rtdd \
+    rtd, rti, rtu, rtuo, rtlo, rtdd, \
     ltd, lti, ltu, ltuo, ltlo, ltdd) \
 { \
     {rtlo,rtuo,rtd, rti, rtu, rtdd}, \
