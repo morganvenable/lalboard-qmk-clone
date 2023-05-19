@@ -23,11 +23,13 @@
 
 #include "quantum.h"
 
+
 //Layout for svalboard v0
 //1 2 3 4 5
 //S E D N W
 //Both Thumbs (same as lalboard_v2)
 //OL OU D IL MODE DOUBLE
+
 #define LAYOUT( \
     r1d, r1n, r1e, r1s, r1w, \
     r2d, r2n, r2e, r2s, r2w, \
@@ -40,6 +42,7 @@
     rtd, rti, rtu, rtuo, rtlo, rtdd, \
     ltd, lti, ltu, ltuo, ltlo, ltdd) \
 { \
+
     {rtlo,rtuo,rtd, rti, rtu, rtdd}, \
     {r1s, r1e, r1d, r1n, r1w, KC_NO}, \
     {r2s, r2e, r2d, r2n, r2w, KC_NO}, \
@@ -51,7 +54,10 @@
     {l2s, l2e, l2d, l2n, l2w, KC_NO}, \
     {l3s, l3e, l3d, l3n, l3w, KC_NO}, \
     {l4s, l4e, l4d, l4n, l4w, KC_NO}, \
+
 }
+
+
 
 #define SPLIT_TRANSPORT_UART_NUM 1
 #define SPLIT_TRANSPORT_UART_RX 12
