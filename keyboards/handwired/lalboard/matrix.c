@@ -88,7 +88,8 @@ void matrix_init(void) {
     for (int col = 0; col < sizeof(col_pins)/sizeof(pin_t); col++) {
         setPinInput(col_pins[col]);
     }
-
+    setPinInputHigh(col_pins[5]); // use pullup for tact switches (the opamps for the other keys drive the lines directly)
+    
     matrix_init_quantum();
 }
 

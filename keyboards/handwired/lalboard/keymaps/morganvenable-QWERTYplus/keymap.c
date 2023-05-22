@@ -60,7 +60,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*R1*/ KC_J,            KC_U,           KC_QUOTE,       KC_M,           KC_H,
         /*R2*/ KC_K,            KC_I,           KC_COLON,       KC_COMMA,       KC_Y,
         /*R3*/ KC_L,            KC_O,           KC_LGUI,         KC_DOT,      KC_N,
-        /*R4*/ KC_SCOLON,         KC_P,           KC_BSLASH,      KC_SLASH,       KC_RBRC,
+        /*R4*/ KC_SCOLON,       KC_P,           KC_BSLASH,      KC_SLASH,       KC_RBRC,
 
         /*L1*/ KC_F,            KC_R,           KC_G,           KC_V,           KC_DOUBLE_QUOTE,
         /*L2*/ KC_D,            KC_E,           KC_T,           KC_C,           KC_GRAVE,
@@ -68,7 +68,7 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*L4*/ KC_A,            KC_Q,           KC_LBRC,        KC_Z,           KC_DEL,
 
         /*Down                  Inner           Upper           Outer Upper     Outer Lower*/
-        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,  TG(NAS),
+        /*RT*/ MO(NAS),         KC_SPACE,       TO(FUNC),       KC_BSPACE,      KC_LALT,  _______, //TG(NAS),
         /*LT*/ KC_LSHIFT,       KC_ENTER,       KC_NORMAL_HOLD, KC_TAB,         KC_LCTRL, KC_CAPS
     ),
 
@@ -167,7 +167,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
           layer_clear();
           layer_on(NORMAL_HOLD);
-          //SEND_STRING(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_F19)))));
+          SEND_STRING(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_F19)))));
       } else {
           layer_off(NORMAL_HOLD);
       }
