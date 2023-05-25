@@ -24,5 +24,5 @@
 	url = https://github.com/qmk/printf
 [submodule "lib/tinyusb"]
 	path = lib/tinyusb
-	url = https://github.com/morganvenable/lalboard-tinyusb.git
+	url = https://github.com/morganvenable/lalboard-tinyusb-clone.git
 	branch = esp-based_on_9f0b401f
