@@ -27,7 +27,7 @@
 /* VID/PID from esp-idf's default tinyusb configuration */
 #define VENDOR_ID       0x303A
 #define PRODUCT_ID      0x4004
-#define DEVICE_VER      0x0001
+#define DEVICE_VER      0x0002
 #define MANUFACTURER    Svalboard
 #define PRODUCT         Svalboard Alpha
 
@@ -41,7 +41,7 @@
 
 // The column with the "down" keys on both the normal and thumb clusters
 // is inverted.
-#define MATRIX_COL_PUSHED_STATES { 0, 0, 0, 0, 0, 0 }
+#define MATRIX_COL_PUSHED_STATES { 0, 0, 1, 0, 0, 0 }
 #define MATRIX_COL_PUSHED_STATES_THUMBS { 0, 0, 1, 0, 0, 0 }
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
