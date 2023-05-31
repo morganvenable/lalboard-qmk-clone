@@ -81,3 +81,4 @@ user_song_list.h
 # Static library files generated in the root for the esp32 platform
 /*.a
 keyboards/handwired/lalboard/keymaps/default/keymap.c
+keyboards/handwired/lalboard/keymaps/default/keymap.c
