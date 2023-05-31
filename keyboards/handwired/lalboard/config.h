@@ -45,7 +45,7 @@
 #define MATRIX_COL_PUSHED_STATES_THUMBS { 0, 0, 1, 0, 0, 0 }
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 15
+//#define DEBOUNCE 15
 
 //#define DEBUG_MATRIX_SCAN_RATE
 
