@@ -28,8 +28,8 @@
 #define VENDOR_ID       0x303A
 #define PRODUCT_ID      0x4004
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    JesusFreke
-#define PRODUCT         lalboard
+#define MANUFACTURER    Svalboard
+#define PRODUCT         Svalboard Alpha
 
 #define MATRIX_ROWS 10
 /* key matrix size (for 1 side) */
