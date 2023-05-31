@@ -96,9 +96,9 @@ __attribute__((weak)) const uint16_t PROGMEM keymaps[NUM_LAYERS][MATRIX_ROWS][MA
         /*R3*/ KC_DOWN,         KC_WH_U,        KC_WH_R,        KC_WH_D,        KC_WH_L,
         /*R4*/ KC_RIGHT,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,
 
-        /*L1*/ XXXXXXX/*RGUI(KC_H)*/,         XXXXXXX,        XXXXXXX,        LCTL(KC_V),     XXXXXXX,
-        /*L2*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_C),     XXXXXXX,
-        /*L3*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        LCTL(KC_X),     XXXXXXX,
+        /*L1*/ RGUI(KC_H),      XXXXXXX,        XXXXXXX,        KC_BTN1,        LCTL(KC_V),
+        /*L2*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        KC_BTN2,        XXXXXXX,
+        /*L3*/ XXXXXXX,         XXXXXXX,        XXXXXXX,        KC_BTN3,        XXXXXXX,
         /*L4*/ DF(NORMAL),      _______,        _______,        XXXXXXX/*DF(COLEMAK_ASRT)*/,       _______,
 
              /*Down             Inner           Upper           Outer Upper     Outer Lower*/
