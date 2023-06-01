@@ -39,9 +39,14 @@
 #define MATRIX_ROW_PINS { 10, 9, 8, 7, 6 }
 #define MATRIX_COL_PINS { 1, 2, 3, 4, 5, 11}
 
+//#define INVERTED_DOWN_KEYS
 // The column with the "down" keys on both the normal and thumb clusters
-// is inverted.
-#define MATRIX_COL_PUSHED_STATES { 0, 0, 1, 0, 0, 0 }
+// is inverted.  This should be true on all units manufactured after 5/31/2023
+#ifdef INVERTED_DOWN_KEYS
+    #define MATRIX_COL_PUSHED_STATES { 0, 0, 1, 0, 0, 0 };
+#else
+    #define MATRIX_COL_PUSHED_STATES { 0, 0, 0, 0, 0, 0 };
+#endif
 #define MATRIX_COL_PUSHED_STATES_THUMBS { 0, 0, 1, 0, 0, 0 }
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
